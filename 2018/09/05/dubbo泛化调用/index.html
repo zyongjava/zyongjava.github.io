@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://blog.csdn.net/zhengyong15984285623?viewmode=contents">
-  <title>Hello World | 郑勇-个人博客</title>
+  <title>dubbo泛化调用 | 郑勇-个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="java">
+  <meta name="description" content="一、前言 泛接口调用方式主要用于客户端没有API接口及模型类元的情况，参数及返回值中的所有POJO均用Map表示，通常用于框架集成，比如：实现一个通用的服务测试框架，可通过GenericService调用所有服务实现。  二、调用示列方式一： xml声明dubbo reference 1&amp;lt;dubbo:reference id=&amp;quot;valueService&amp;quot; interfac">
+<meta name="keywords" content="dubbo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/03/hello-world/index.html">
+<meta property="og:title" content="dubbo泛化调用">
+<meta property="og:url" content="https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/dubbo泛化调用/index.html">
 <meta property="og:site_name" content="郑勇-个人博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="一、前言 泛接口调用方式主要用于客户端没有API接口及模型类元的情况，参数及返回值中的所有POJO均用Map表示，通常用于框架集成，比如：实现一个通用的服务测试框架，可通过GenericService调用所有服务实现。  二、调用示列方式一： xml声明dubbo reference 1&amp;lt;dubbo:reference id=&amp;quot;valueService&amp;quot; interfac">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-03T08:46:32.294Z">
+<meta property="og:updated_time" content="2018-09-05T07:31:11.253Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="dubbo泛化调用">
+<meta name="twitter:description" content="一、前言 泛接口调用方式主要用于客户端没有API接口及模型类元的情况，参数及返回值中的所有POJO均用Map表示，通常用于框架集成，比如：实现一个通用的服务测试框架，可通过GenericService调用所有服务实现。  二、调用示列方式一： xml声明dubbo reference 1&amp;lt;dubbo:reference id=&amp;quot;valueService&amp;quot; interfac">
   
     <link rel="alternative" href="/atom.xml" title="郑勇-个人博客" type="application/atom+xml">
   
@@ -154,35 +154,34 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-dubbo泛化调用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      dubbo泛化调用
     </h1>
   
 
         
-        <a href="/2018/09/03/hello-world/" class="archive-article-date">
-  	<time datetime="2018-09-03T08:46:32.294Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-03</time>
+        <a href="/2018/09/05/dubbo泛化调用/" class="archive-article-date">
+  	<time datetime="2018-09-05T07:30:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h4 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h4><blockquote>
+<p>泛接口调用方式主要用于客户端没有API接口及模型类元的情况，参数及返回值中的所有POJO均用Map表示，通常用于框架集成，比如：实现一个通用的服务测试框架，可通过GenericService调用所有服务实现。</p>
+</blockquote>
+<h4 id="二、调用示列"><a href="#二、调用示列" class="headerlink" title="二、调用示列"></a>二、调用示列</h4><p>方式一： xml声明dubbo reference</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;dubbo:reference id=&quot;valueService&quot; interface=&quot;cn.pomelo.client.intf.IListValueService&quot; generic=&quot;true&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GenericService barService = (GenericService) applicationContext.getBean(&quot;valueService&quot;);</span><br><span class="line"></span><br><span class="line">// 用Map表示POJO参数，如果返回值为POJO也将自动转成Map</span><br><span class="line">Map&lt;String, Object&gt; cache = new HashMap&lt;&gt;();</span><br><span class="line">cache.put(&quot;type&quot;, &quot;mobile&quot;);</span><br><span class="line">cache.put(&quot;value&quot;, &quot;18969975142&quot;);</span><br><span class="line"></span><br><span class="line">// 基本类型以及Date,List,Map等不需要转换，直接调用</span><br><span class="line">Object result = genericService.$invoke(&quot;getCache&quot;,</span><br><span class="line">                                       new String[] &#123; &quot;cn.pomelo.client.pojo.request.ListQueryBean&quot; &#125;,</span><br><span class="line">                                       new Object[] &#123; cache &#125;);</span><br></pre></td></tr></table></figure>
+<p>方式二：xml不声明dubbo reference</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> @Autowired</span><br><span class="line"> private ReferenceConfig&lt;GenericService&gt; referenceConfig;</span><br><span class="line"></span><br><span class="line"> public Object genericInvoker() &#123;</span><br><span class="line">    // 引用远程服务</span><br><span class="line">    ReferenceConfig&lt;GenericService&gt; reference = new ReferenceConfig&lt;&gt;(); // 该实例很重量，里面封装了所有与注册中心及服务提供方连接，请缓存</span><br><span class="line">    reference.setInterface(&quot;cn.pomelo.client.intf.IListValueService&quot;); // 弱类型接口名</span><br><span class="line">    reference.setVersion(&quot;1.0.0&quot;);</span><br><span class="line">    reference.setGeneric(true); // 声明为泛化接口</span><br><span class="line">    reference.setApplication(referenceConfig.getApplication());</span><br><span class="line">    reference.setRegistry(referenceConfig.getRegistry());</span><br><span class="line"></span><br><span class="line">    GenericService genericService = reference.get(); // 用com.alibaba.dubbo.rpc.service.GenericService可以替代所有接口引用</span><br><span class="line"></span><br><span class="line">    // 用Map表示POJO参数，如果返回值为POJO也将自动转成Map</span><br><span class="line">    Map&lt;String, Object&gt; cache = new HashMap&lt;&gt;();</span><br><span class="line">    cache.put(&quot;type&quot;, &quot;mobile&quot;);</span><br><span class="line">    cache.put(&quot;value&quot;, &quot;18969975142&quot;);</span><br><span class="line">    // 基本类型以及Date,List,Map等不需要转换，直接调用</span><br><span class="line">    Object result = genericService.$invoke(&quot;getCache&quot;,</span><br><span class="line">                                           new String[] &#123; &quot;cn.pomelo.client.pojo.request.ListQueryBean&quot; &#125;,</span><br><span class="line">                                           new Object[] &#123; cache &#125;);</span><br><span class="line"></span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -212,6 +211,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dubbo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -262,7 +272,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/03/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/dubbo泛化调用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -276,15 +286,20 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/04/Hexo部署github博客/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/09/05/wireshark抓包过虑规则/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Hexo部署github博客
+          wireshark抓包过虑规则
         
       </div>
     </a>
   
+  
+    <a href="/2018/09/05/awk使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">awk使用</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 

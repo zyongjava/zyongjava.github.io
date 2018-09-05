@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://blog.csdn.net/zhengyong15984285623?viewmode=contents">
-  <title>Hello World | 郑勇-个人博客</title>
+  <title>wireshark抓包过虑规则 | 郑勇-个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="java">
+  <meta name="description" content="wireshark抓包过虑规则简介 Wireshark（前称Ethereal）是一个网络封包分析软件。网络封包分析软件的功能是撷取网络封包，并尽可能显示出最为详细的网络封包资料  安装下载地址：https://www.wireshark.org/download.html 规则描述   规则 说明 备注     http.request.uri 过滤出所有uri    http.request.m">
+<meta name="keywords" content="wireshark">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/03/hello-world/index.html">
+<meta property="og:title" content="wireshark抓包过虑规则">
+<meta property="og:url" content="https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/wireshark抓包过虑规则/index.html">
 <meta property="og:site_name" content="郑勇-个人博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="wireshark抓包过虑规则简介 Wireshark（前称Ethereal）是一个网络封包分析软件。网络封包分析软件的功能是撷取网络封包，并尽可能显示出最为详细的网络封包资料  安装下载地址：https://www.wireshark.org/download.html 规则描述   规则 说明 备注     http.request.uri 过滤出所有uri    http.request.m">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-03T08:46:32.294Z">
+<meta property="og:image" content="http://img.blog.csdn.net/20170314165120591?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhlbmd5b25nMTU5ODQyODU2MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20170314170259932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhlbmd5b25nMTU5ODQyODU2MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-09-05T07:33:44.467Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="wireshark抓包过虑规则">
+<meta name="twitter:description" content="wireshark抓包过虑规则简介 Wireshark（前称Ethereal）是一个网络封包分析软件。网络封包分析软件的功能是撷取网络封包，并尽可能显示出最为详细的网络封包资料  安装下载地址：https://www.wireshark.org/download.html 规则描述   规则 说明 备注     http.request.uri 过滤出所有uri    http.request.m">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170314165120591?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhlbmd5b25nMTU5ODQyODU2MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
   
     <link rel="alternative" href="/atom.xml" title="郑勇-个人博客" type="application/atom+xml">
   
@@ -154,35 +157,96 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-wireshark抓包过虑规则" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      wireshark抓包过虑规则
     </h1>
   
 
         
-        <a href="/2018/09/03/hello-world/" class="archive-article-date">
-  	<time datetime="2018-09-03T08:46:32.294Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-03</time>
+        <a href="/2018/09/05/wireshark抓包过虑规则/" class="archive-article-date">
+  	<time datetime="2018-09-05T07:32:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h2 id="wireshark抓包过虑规则"><a href="#wireshark抓包过虑规则" class="headerlink" title="wireshark抓包过虑规则"></a>wireshark抓包过虑规则</h2><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><blockquote>
+<p>Wireshark（前称Ethereal）是一个网络封包分析软件。网络封包分析软件的功能是撷取网络封包，并尽可能显示出最为详细的网络封包资料</p>
+</blockquote>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>下载地址：<a href="https://www.wireshark.org/download.html" target="_blank" rel="noopener">https://www.wireshark.org/download.html</a></p>
+<h4 id="规则描述"><a href="#规则描述" class="headerlink" title="规则描述"></a>规则描述</h4><table>
+<thead>
+<tr>
+<th>规则</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>http.request.uri</td>
+<td>过滤出所有uri</td>
+<td></td>
+</tr>
+<tr>
+<td>http.request.method==”POST”</td>
+<td>过滤出所有post请求</td>
+<td></td>
+</tr>
+<tr>
+<td>http.request.uri==”/v2transapi”</td>
+<td>过滤指定uri</td>
+<td>过滤出/v2transapi</td>
+</tr>
+<tr>
+<td>http.request.uri matches “/*api”</td>
+<td>过滤url中包含api结尾的uri</td>
+<td></td>
+</tr>
+<tr>
+<td>ip.src==106.39.162.57</td>
+<td>来源ip等于某个ip</td>
+<td>同ip.src eq 106.39.162.57</td>
+</tr>
+<tr>
+<td>ip.dst==106.39.162.57</td>
+<td>目标ip等于某个ip</td>
+<td>同ip.dst eq 106.39.162.57</td>
+</tr>
+<tr>
+<td>ip.addr==106.39.162.57</td>
+<td>同时显示来源和目标ip</td>
+<td>同ip.addr eq 192.168.1.107</td>
+</tr>
+<tr>
+<td>tcp.port==443</td>
+<td>过滤端口</td>
+<td>过滤出端口为443</td>
+</tr>
+<tr>
+<td>http</td>
+<td>过滤协议</td>
+<td>同tcp、udp、arp、http、ftp、ssl、smtp、dns、ip</td>
+</tr>
+<tr>
+<td>eth.dst==A0:00:00:04:C5:84</td>
+<td>太以网头过滤</td>
+<td>过滤目标mac</td>
+</tr>
+</tbody>
+</table>
+<h4 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h4><p>访问<a href="http://fanyi.baidu.com/v2transapi?simple_means_flag=3&amp;transtype=translang&amp;query=hello&amp;from=en&amp;to=zh" target="_blank" rel="noopener">http://fanyi.baidu.com/v2transapi</a>结果如下：</p>
+<p><img src="http://img.blog.csdn.net/20170314165120591?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhlbmd5b25nMTU5ODQyODU2MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="http协议包"></p>
+<p>1）No1：请求客户端（10.57.2.232）向服务器（106.39.162.57）发出连接请求。此为TCP三次握手第一步，此时从图中可以看出，为SYN，seq:X （x=0）<br>2）No2：服务器（106.39.162.57）回应了请求客户端（10.57.2.232）的请求，并要求确认，此时为：SYN，ACK，此时seq：y（y为0），ACK：x+1（为1）。此为三次握手的第二步；<br>3）No3：请求客户端（10.57.2.232）回应了服务器（106.39.162.57）的确认，连接成功。为：ACK，此时seq：x+1（为1），ACK：y+1（为1）。此为三次握手的第三步；<br>4）No4：请求客户端（10.57.2.232）发出一个页面HTTP请求；<br>5）No5：服务器（106.39.162.57）确认；<br>6）No6：服务器（106.39.162.57）发送数据；</p>
+<h4 id="TCP-三次握手协议"><a href="#TCP-三次握手协议" class="headerlink" title="TCP 三次握手协议"></a>TCP 三次握手协议</h4><p><img src="http://img.blog.csdn.net/20170314170259932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhlbmd5b25nMTU5ODQyODU2MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>详见百科：<a href="http://baike.baidu.com/item/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B?fr=aladdin" target="_blank" rel="noopener">http://baike.baidu.com/item/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B?fr=aladdin</a></p>
 
       
 
@@ -212,6 +276,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">wireshark</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -262,7 +337,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/03/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/wireshark抓包过虑规则/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -276,15 +351,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/04/Hexo部署github博客/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Hexo部署github博客
-        
-      </div>
-    </a>
   
+    <a href="/2018/09/05/dubbo泛化调用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">dubbo泛化调用</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
