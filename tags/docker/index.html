@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://blog.csdn.net/zhengyong15984285623?viewmode=contents">
-  <title>awk使用 | 郑勇-个人博客</title>
+  <title>Tag: docker | 郑勇-个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="首先建立文本log.txt: 12342 this is a test3 Are you like awkThis&amp;apos;s a test10 There are orange,apple,mongo A. 每行按空格或TAB分割，输出文本中的1、4项, 例如：awk &amp;#39;{print $1,$4}&amp;#39; log.txt123456$ awk &amp;apos;&amp;#123;print $1">
-<meta name="keywords" content="awk">
-<meta property="og:type" content="article">
-<meta property="og:title" content="awk使用">
-<meta property="og:url" content="https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/awk使用/index.html">
+  <meta name="description" content="java">
+<meta name="keywords" content="java">
+<meta property="og:type" content="website">
+<meta property="og:title" content="郑勇-个人博客">
+<meta property="og:url" content="https://blog.csdn.net/zhengyong15984285623?viewmode=contents/tags/docker/index.html">
 <meta property="og:site_name" content="郑勇-个人博客">
-<meta property="og:description" content="首先建立文本log.txt: 12342 this is a test3 Are you like awkThis&amp;apos;s a test10 There are orange,apple,mongo A. 每行按空格或TAB分割，输出文本中的1、4项, 例如：awk &amp;#39;{print $1,$4}&amp;#39; log.txt123456$ awk &amp;apos;&amp;#123;print $1">
+<meta property="og:description" content="java">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-05T07:30:00.578Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="awk使用">
-<meta name="twitter:description" content="首先建立文本log.txt: 12342 this is a test3 Are you like awkThis&amp;apos;s a test10 There are orange,apple,mongo A. 每行按空格或TAB分割，输出文本中的1、4项, 例如：awk &amp;#39;{print $1,$4}&amp;#39; log.txt123456$ awk &amp;apos;&amp;#123;print $1">
+<meta name="twitter:title" content="郑勇-个人博客">
+<meta name="twitter:description" content="java">
   
     <link rel="alternative" href="/atom.xml" title="郑勇-个人博客" type="application/atom+xml">
   
@@ -154,198 +153,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-awk使用" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      awk使用
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/09/05/docker使用/" class="archive-article-date">
+  	<time datetime="2018-09-05T07:46:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/09/05/docker使用/">docker使用</a>
     </h1>
   
 
-        
-        <a href="/2018/09/05/awk使用/" class="archive-article-date">
-  	<time datetime="2018-09-05T07:29:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先建立文本<code>log.txt</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2 this is a test</span><br><span class="line">3 Are you like awk</span><br><span class="line">This&apos;s a test</span><br><span class="line">10 There are orange,apple,mongo</span><br></pre></td></tr></table></figure>
-<h4 id="A-每行按空格或TAB分割，输出文本中的1、4项-例如：awk-39-print-1-4-39-log-txt"><a href="#A-每行按空格或TAB分割，输出文本中的1、4项-例如：awk-39-print-1-4-39-log-txt" class="headerlink" title="A. 每行按空格或TAB分割，输出文本中的1、4项, 例如：awk &#39;{print $1,$4}&#39; log.txt"></a>A. 每行按空格或TAB分割，输出文本中的1、4项, 例如：<code>awk &#39;{print $1,$4}&#39; log.txt</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ awk &apos;&#123;print $1,$4&#125;&apos; log.txt</span><br><span class="line"></span><br><span class="line">2 a</span><br><span class="line">3 like</span><br><span class="line">This&apos;s</span><br><span class="line">10 orange,apple,mongo</span><br></pre></td></tr></table></figure>
-<h4 id="B-使用”-”分割，例如：awk-F-39-print-1-2-39-log-txt"><a href="#B-使用”-”分割，例如：awk-F-39-print-1-2-39-log-txt" class="headerlink" title="B. 使用”,”分割，例如：awk -F, &#39;{print $1,$2}&#39; log.txt"></a>B. 使用”,”分割，例如：<code>awk -F, &#39;{print $1,$2}&#39; log.txt</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ awk -F, &apos;&#123;print $1,$2&#125;&apos; log.txt</span><br><span class="line"></span><br><span class="line">2 this is a test</span><br><span class="line">3 Are you like awk</span><br><span class="line">This&apos;s a test</span><br><span class="line">10 There are orange apple</span><br></pre></td></tr></table></figure>
-<h4 id="C-使用多个分隔符-先使用空格分割，然后对分割结果再使用”-”分割-例如：awk-F-39-39-39-print-1-2-5-39-log-txt"><a href="#C-使用多个分隔符-先使用空格分割，然后对分割结果再使用”-”分割-例如：awk-F-39-39-39-print-1-2-5-39-log-txt" class="headerlink" title="C. 使用多个分隔符.先使用空格分割，然后对分割结果再使用”,”分割. 例如：awk -F &#39;[ ,]&#39;  &#39;{print $1,$2,$5}&#39; log.txt"></a>C. 使用多个分隔符.先使用空格分割，然后对分割结果再使用”,”分割. 例如：<code>awk -F &#39;[ ,]&#39;  &#39;{print $1,$2,$5}&#39; log.txt</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ awk -F &apos;[ ,]&apos;  &apos;&#123;print $1,$2,$5&#125;&apos; log.txt</span><br><span class="line"></span><br><span class="line">2 this test</span><br><span class="line">3 Are awk</span><br><span class="line">This&apos;s a</span><br><span class="line">10 There apple</span><br></pre></td></tr></table></figure>
-<h4 id="D-使用awk-v设置变量a-1-例如：awk-v-a-1-39-print-1-1-a-39-log-txt"><a href="#D-使用awk-v设置变量a-1-例如：awk-v-a-1-39-print-1-1-a-39-log-txt" class="headerlink" title="D. 使用awk -v设置变量a=1, 例如：awk -v a=1 &#39;{print $1,$1+a}&#39; log.txt"></a>D. 使用<code>awk -v</code>设置变量<code>a=1</code>, 例如：<code>awk -v a=1 &#39;{print $1,$1+a}&#39; log.txt</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ awk -v a=1 &apos;&#123;print $1,$1+a&#125;&apos; log.txt</span><br><span class="line"></span><br><span class="line">2 3</span><br><span class="line">3 4</span><br><span class="line">This&apos;s 1</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure>
-<h4 id="E-使用脚本，例如：awk-f-cal-awk-log-txt"><a href="#E-使用脚本，例如：awk-f-cal-awk-log-txt" class="headerlink" title="E. 使用脚本，例如：awk -f cal.awk log.txt"></a>E. 使用脚本，例如：<code>awk -f cal.awk log.txt</code></h4><h4 id="F-awk使用运算符"><a href="#F-awk使用运算符" class="headerlink" title="F. awk使用运算符"></a>F. awk使用运算符</h4><p>1) 过滤第一例大于2的行. 例如：<code>awk &#39;$1&gt;2&#39; log.txt</code></p>
-<p>2) 过滤第一列大于2并且第二列等于’Are’的行. 例如：<code>awk &#39;$1&gt;2 &amp;&amp; $2==&quot;Are&quot; {print $1,$2,$3}&#39; log.txt</code></p>
-<h4 id="G-awk正使用则表达式"><a href="#G-awk正使用则表达式" class="headerlink" title="G. awk正使用则表达式"></a>G. awk正使用则表达式</h4><p>注意：~ 表示模式开始。// 中是模式。</p>
-<p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 输出第二列包含 &quot;th&quot;，并打印第二列与第四列</span><br><span class="line">$ awk &apos;$2 ~ /th/ &#123;print $2,$4&#125;&apos; log.txt</span><br><span class="line">---------------------------------------------</span><br><span class="line">this a</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 输出包含&quot;re&quot; 的行</span><br><span class="line">$ awk &apos;/re/ &apos; log.txt</span><br><span class="line">---------------------------------------------</span><br><span class="line">3 Are you like awk</span><br><span class="line">10 There are orange,apple,mongo</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 忽略大小写</span><br><span class="line">$ awk &apos;BEGIN&#123;IGNORECASE=1&#125; /this/&apos; log.txt</span><br><span class="line">---------------------------------------------</span><br><span class="line">2 this is a test</span><br><span class="line">This&apos;s a test</span><br></pre></td></tr></table></figure>
-<h4 id="H-awk脚本"><a href="#H-awk脚本" class="headerlink" title="H. awk脚本"></a>H. awk脚本</h4><p>BEGIN{ 这里面放的是执行前的语句 }</p>
-<p>END {这里面放的是处理完所有的行后要执行的语句 }</p>
-<p>{这里面放的是处理每一行时要执行的语句}</p>
-<p>例如<code>cal.awk</code>内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/awk -f</span><br><span class="line">#运行前</span><br><span class="line">BEGIN &#123;</span><br><span class="line">    math = 0</span><br><span class="line">    english = 0</span><br><span class="line">    computer = 0</span><br><span class="line"> </span><br><span class="line">    printf &quot;NAME    NO.   MATH  ENGLISH  COMPUTER   TOTAL\n&quot;</span><br><span class="line">    printf &quot;---------------------------------------------\n&quot;</span><br><span class="line">&#125;</span><br><span class="line">#运行中</span><br><span class="line">&#123;</span><br><span class="line">    math+=$3</span><br><span class="line">    english+=$4</span><br><span class="line">    computer+=$5</span><br><span class="line">    printf &quot;%-6s %-6s %4d %8d %8d %8d\n&quot;, $1, $2, $3,$4,$5, $3+$4+$5</span><br><span class="line">&#125;</span><br><span class="line">#运行后</span><br><span class="line">END &#123;</span><br><span class="line">    printf &quot;---------------------------------------------\n&quot;</span><br><span class="line">    printf &quot;  TOTAL:%10d %8d %8d \n&quot;, math, english, computer</span><br><span class="line">    printf &quot;AVERAGE:%10.2f %8.2f %8.2f\n&quot;, math/NR, english/NR, computer/NR</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>G. 统计行数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk &apos;/error/&apos; app.log | awk &apos;END &#123;print NR&#125;&apos;</span><br></pre></td></tr></table></figure>
-<p>或者：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -c &apos;error&apos; app.log</span><br></pre></td></tr></table></figure>
-<p>参考：<a href="http://www.runoob.com/linux/linux-comm-awk.html" target="_blank" rel="noopener">http://www.runoob.com/linux/linux-comm-awk.html</a></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">awk</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/awk使用/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/09/05/dubbo泛化调用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          dubbo泛化调用
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/09/05/greys使用/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">greys在线问题诊断工具</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -369,9 +230,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

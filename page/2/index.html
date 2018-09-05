@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://blog.csdn.net/zhengyong15984285623?viewmode=contents">
-  <title>awk使用 | 郑勇-个人博客</title>
+  <title>郑勇-个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="首先建立文本log.txt: 12342 this is a test3 Are you like awkThis&amp;apos;s a test10 There are orange,apple,mongo A. 每行按空格或TAB分割，输出文本中的1、4项, 例如：awk &amp;#39;{print $1,$4}&amp;#39; log.txt123456$ awk &amp;apos;&amp;#123;print $1">
-<meta name="keywords" content="awk">
-<meta property="og:type" content="article">
-<meta property="og:title" content="awk使用">
-<meta property="og:url" content="https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/awk使用/index.html">
+  <meta name="description" content="java">
+<meta name="keywords" content="java">
+<meta property="og:type" content="website">
+<meta property="og:title" content="郑勇-个人博客">
+<meta property="og:url" content="https://blog.csdn.net/zhengyong15984285623?viewmode=contents/page/2/index.html">
 <meta property="og:site_name" content="郑勇-个人博客">
-<meta property="og:description" content="首先建立文本log.txt: 12342 this is a test3 Are you like awkThis&amp;apos;s a test10 There are orange,apple,mongo A. 每行按空格或TAB分割，输出文本中的1、4项, 例如：awk &amp;#39;{print $1,$4}&amp;#39; log.txt123456$ awk &amp;apos;&amp;#123;print $1">
+<meta property="og:description" content="java">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-05T07:30:00.578Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="awk使用">
-<meta name="twitter:description" content="首先建立文本log.txt: 12342 this is a test3 Are you like awkThis&amp;apos;s a test10 There are orange,apple,mongo A. 每行按空格或TAB分割，输出文本中的1、4项, 例如：awk &amp;#39;{print $1,$4}&amp;#39; log.txt123456$ awk &amp;apos;&amp;#123;print $1">
+<meta name="twitter:title" content="郑勇-个人博客">
+<meta name="twitter:description" content="java">
   
     <link rel="alternative" href="/atom.xml" title="郑勇-个人博客" type="application/atom+xml">
   
@@ -154,14 +153,240 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-awk使用" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-wireshark抓包过虑规则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      awk使用
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/05/wireshark抓包过虑规则/">wireshark抓包过虑规则</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/05/wireshark抓包过虑规则/" class="archive-article-date">
+  	<time datetime="2018-09-05T07:32:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="wireshark抓包过虑规则"><a href="#wireshark抓包过虑规则" class="headerlink" title="wireshark抓包过虑规则"></a>wireshark抓包过虑规则</h2><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><blockquote>
+<p>Wireshark（前称Ethereal）是一个网络封包分析软件。网络封包分析软件的功能是撷取网络封包，并尽可能显示出最为详细的网络封包资料</p>
+</blockquote>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>下载地址：<a href="https://www.wireshark.org/download.html" target="_blank" rel="noopener">https://www.wireshark.org/download.html</a></p>
+<h4 id="规则描述"><a href="#规则描述" class="headerlink" title="规则描述"></a>规则描述</h4><table>
+<thead>
+<tr>
+<th>规则</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>http.request.uri</td>
+<td>过滤出所有uri</td>
+<td></td>
+</tr>
+<tr>
+<td>http.request.method==”POST”</td>
+<td>过滤出所有post请求</td>
+<td></td>
+</tr>
+<tr>
+<td>http.request.uri==”/v2transapi”</td>
+<td>过滤指定uri</td>
+<td>过滤出/v2transapi</td>
+</tr>
+<tr>
+<td>http.request.uri matches “/*api”</td>
+<td>过滤url中包含api结尾的uri</td>
+<td></td>
+</tr>
+<tr>
+<td>ip.src==106.39.162.57</td>
+<td>来源ip等于某个ip</td>
+<td>同ip.src eq 106.39.162.57</td>
+</tr>
+<tr>
+<td>ip.dst==106.39.162.57</td>
+<td>目标ip等于某个ip</td>
+<td>同ip.dst eq 106.39.162.57</td>
+</tr>
+<tr>
+<td>ip.addr==106.39.162.57</td>
+<td>同时显示来源和目标ip</td>
+<td>同ip.addr eq 192.168.1.107</td>
+</tr>
+<tr>
+<td>tcp.port==443</td>
+<td>过滤端口</td>
+<td>过滤出端口为443</td>
+</tr>
+<tr>
+<td>http</td>
+<td>过滤协议</td>
+<td>同tcp、udp、arp、http、ftp、ssl、smtp、dns、ip</td>
+</tr>
+<tr>
+<td>eth.dst==A0:00:00:04:C5:84</td>
+<td>太以网头过滤</td>
+<td>过滤目标mac</td>
+</tr>
+</tbody>
+</table>
+<h4 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h4><p>访问<a href="http://fanyi.baidu.com/v2transapi?simple_means_flag=3&amp;transtype=translang&amp;query=hello&amp;from=en&amp;to=zh" target="_blank" rel="noopener">http://fanyi.baidu.com/v2transapi</a>结果如下：</p>
+<p><img src="http://img.blog.csdn.net/20170314165120591?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhlbmd5b25nMTU5ODQyODU2MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="http协议包"></p>
+<p>1）No1：请求客户端（10.57.2.232）向服务器（106.39.162.57）发出连接请求。此为TCP三次握手第一步，此时从图中可以看出，为SYN，seq:X （x=0）<br>2）No2：服务器（106.39.162.57）回应了请求客户端（10.57.2.232）的请求，并要求确认，此时为：SYN，ACK，此时seq：y（y为0），ACK：x+1（为1）。此为三次握手的第二步；<br>3）No3：请求客户端（10.57.2.232）回应了服务器（106.39.162.57）的确认，连接成功。为：ACK，此时seq：x+1（为1），ACK：y+1（为1）。此为三次握手的第三步；<br>4）No4：请求客户端（10.57.2.232）发出一个页面HTTP请求；<br>5）No5：服务器（106.39.162.57）确认；<br>6）No6：服务器（106.39.162.57）发送数据；</p>
+<h4 id="TCP-三次握手协议"><a href="#TCP-三次握手协议" class="headerlink" title="TCP 三次握手协议"></a>TCP 三次握手协议</h4><p><img src="http://img.blog.csdn.net/20170314170259932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhlbmd5b25nMTU5ODQyODU2MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>详见百科：<a href="http://baike.baidu.com/item/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B?fr=aladdin" target="_blank" rel="noopener">http://baike.baidu.com/item/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B?fr=aladdin</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">wireshark</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/05/wireshark抓包过虑规则/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dubbo泛化调用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/05/dubbo泛化调用/">dubbo泛化调用</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/05/dubbo泛化调用/" class="archive-article-date">
+  	<time datetime="2018-09-05T07:30:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h4><blockquote>
+<p>泛接口调用方式主要用于客户端没有API接口及模型类元的情况，参数及返回值中的所有POJO均用Map表示，通常用于框架集成，比如：实现一个通用的服务测试框架，可通过GenericService调用所有服务实现。</p>
+</blockquote>
+<h4 id="二、调用示列"><a href="#二、调用示列" class="headerlink" title="二、调用示列"></a>二、调用示列</h4><p>方式一： xml声明dubbo reference</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;dubbo:reference id=&quot;valueService&quot; interface=&quot;cn.pomelo.client.intf.IListValueService&quot; generic=&quot;true&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GenericService barService = (GenericService) applicationContext.getBean(&quot;valueService&quot;);</span><br><span class="line"></span><br><span class="line">// 用Map表示POJO参数，如果返回值为POJO也将自动转成Map</span><br><span class="line">Map&lt;String, Object&gt; cache = new HashMap&lt;&gt;();</span><br><span class="line">cache.put(&quot;type&quot;, &quot;mobile&quot;);</span><br><span class="line">cache.put(&quot;value&quot;, &quot;18969975142&quot;);</span><br><span class="line"></span><br><span class="line">// 基本类型以及Date,List,Map等不需要转换，直接调用</span><br><span class="line">Object result = genericService.$invoke(&quot;getCache&quot;,</span><br><span class="line">                                       new String[] &#123; &quot;cn.pomelo.client.pojo.request.ListQueryBean&quot; &#125;,</span><br><span class="line">                                       new Object[] &#123; cache &#125;);</span><br></pre></td></tr></table></figure>
+<p>方式二：xml不声明dubbo reference</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> @Autowired</span><br><span class="line"> private ReferenceConfig&lt;GenericService&gt; referenceConfig;</span><br><span class="line"></span><br><span class="line"> public Object genericInvoker() &#123;</span><br><span class="line">    // 引用远程服务</span><br><span class="line">    ReferenceConfig&lt;GenericService&gt; reference = new ReferenceConfig&lt;&gt;(); // 该实例很重量，里面封装了所有与注册中心及服务提供方连接，请缓存</span><br><span class="line">    reference.setInterface(&quot;cn.pomelo.client.intf.IListValueService&quot;); // 弱类型接口名</span><br><span class="line">    reference.setVersion(&quot;1.0.0&quot;);</span><br><span class="line">    reference.setGeneric(true); // 声明为泛化接口</span><br><span class="line">    reference.setApplication(referenceConfig.getApplication());</span><br><span class="line">    reference.setRegistry(referenceConfig.getRegistry());</span><br><span class="line"></span><br><span class="line">    GenericService genericService = reference.get(); // 用com.alibaba.dubbo.rpc.service.GenericService可以替代所有接口引用</span><br><span class="line"></span><br><span class="line">    // 用Map表示POJO参数，如果返回值为POJO也将自动转成Map</span><br><span class="line">    Map&lt;String, Object&gt; cache = new HashMap&lt;&gt;();</span><br><span class="line">    cache.put(&quot;type&quot;, &quot;mobile&quot;);</span><br><span class="line">    cache.put(&quot;value&quot;, &quot;18969975142&quot;);</span><br><span class="line">    // 基本类型以及Date,List,Map等不需要转换，直接调用</span><br><span class="line">    Object result = genericService.$invoke(&quot;getCache&quot;,</span><br><span class="line">                                           new String[] &#123; &quot;cn.pomelo.client.pojo.request.ListQueryBean&quot; &#125;,</span><br><span class="line">                                           new Object[] &#123; cache &#125;);</span><br><span class="line"></span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dubbo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/05/dubbo泛化调用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-awk使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/05/awk使用/">awk使用</a>
     </h1>
   
 
@@ -201,27 +426,6 @@
       
 
       
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
     </div>
     <div class="article-info article-info-index">
       
@@ -240,84 +444,16 @@
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/05/awk使用/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/awk使用/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/09/05/dubbo泛化调用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          dubbo泛化调用
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/09/05/greys使用/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">greys在线问题诊断工具</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -337,14 +473,526 @@
 
 
 
-  
-  
-  
 
   
-
+    <article id="post-greys使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/05/greys使用/">greys在线问题诊断工具</a>
+    </h1>
   
 
+        
+        <a href="/2018/09/05/greys使用/" class="archive-article-date">
+  	<time datetime="2018-09-05T07:27:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h4><blockquote>
+<p> 我们平时在线上或者开发中会遇到各种性能、功能等问题，在运行过程中需要查看方法入参、返回值，或者方法执行的堆栈时间，或者jar冲突时类加载来自那个jar包等问题。我们在开发过程中，可能会打印log日志、手动去打印入参、返回值等，或者自己实现简单的profile方法，代码侵入性大且效率较低；另外我们可以使用类似btrace工具去跟踪，这需要自己去实现btrace脚本，服务端需要启动agent，也有点小麻烦。后来淘宝聚石用scala写了个houseMD，但只支持到jdk1.6，后续也没有更新了；后面又有淘宝同学借鉴了btrace和houseMD，写了Greys，方便定位常见的java问题，下面简单介绍其使用方法。</p>
+</blockquote>
+<p>下载地址：<a href="http://ompc.oss.aliyuncs.com/greys/release/greys-1.7.6.4-bin.zip" target="_blank" rel="noopener">http://ompc.oss.aliyuncs.com/greys/release/greys-1.7.6.4-bin.zip</a></p>
+<h4 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h4><p>a. 解压greys-1.7.6.4-bin.zip，目录结构如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-rwxr-xr-x. 1 admin admin    1047 11月  7 11:54 ga.sh</span><br><span class="line">-rw-r--r--. 1 admin admin   10595 11月  7 11:54 greys-agent.jar</span><br><span class="line">-rw-r--r--. 1 admin admin 3472230 11月  7 11:54 greys-core.jar</span><br><span class="line">-rwxr-xr-x. 1 admin admin    7972 11月  7 11:54 greys.sh</span><br><span class="line">-rwxr-xr-x. 1 admin admin    2927 11月  7 11:54 gs.sh</span><br><span class="line">-rwxr-xr-x. 1 admin admin     683 11月  7 11:54 install-local.sh</span><br></pre></td></tr></table></figure>
+<p>b. 安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd greys</span><br><span class="line">sh ./install-local.sh</span><br></pre></td></tr></table></figure>
+<h4 id="三、待监控应用启动agent"><a href="#三、待监控应用启动agent" class="headerlink" title="三、待监控应用启动agent"></a>三、待监控应用启动agent</h4><p>pid为应用进程号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./ga.sh pid</span><br></pre></td></tr></table></figure>
+<h4 id="四、应用监控控制客户端"><a href="#四、应用监控控制客户端" class="headerlink" title="四、应用监控控制客户端"></a>四、应用监控控制客户端</h4><p>pid 为应用进程号， ip为应用所在机器， 3658为agent默认端口号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./greys.sh pid@ip:3658</span><br></pre></td></tr></table></figure>
+<p>或者远程访问<code>telnet ip 3658</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./gs.sh ip</span><br></pre></td></tr></table></figure>
+<h4 id="五、Greys命令详解"><a href="#五、Greys命令详解" class="headerlink" title="五、Greys命令详解"></a>五、Greys命令详解</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>help</td>
+<td>查看命令的帮助文档，每个命令和参数都有很详细的说明</td>
+</tr>
+<tr>
+<td>sc</td>
+<td>查看JVM已加载的类信息</td>
+</tr>
+<tr>
+<td>sm</td>
+<td>查看已加载的方法信息</td>
+</tr>
+<tr>
+<td>monitor</td>
+<td>方法执行监控</td>
+</tr>
+<tr>
+<td>trace</td>
+<td>渲染方法内部调用路径，并输出方法路径上的每个节点上耗时</td>
+</tr>
+<tr>
+<td>ptrace</td>
+<td>强化版的trace命令。通过指定渲染路径，并可记录下路径中所有方法的入参、返值；与tt命令联动</td>
+</tr>
+<tr>
+<td>watch</td>
+<td>方法执行数据观测</td>
+</tr>
+<tr>
+<td>tt</td>
+<td>方法执行数据的时空隧道，记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测</td>
+</tr>
+<tr>
+<td>stack</td>
+<td>输出当前方法被调用的调用路径</td>
+</tr>
+<tr>
+<td>js</td>
+<td>支持使用JavaScript脚本；支持CommonJS部分规范模块化（BMD规范）</td>
+</tr>
+<tr>
+<td>version</td>
+<td>输出当前目标Java进程所加载的Greys版本号</td>
+</tr>
+<tr>
+<td>quit</td>
+<td>退出greys客户端</td>
+</tr>
+<tr>
+<td>shutdown</td>
+<td>关闭greys服务端</td>
+</tr>
+<tr>
+<td>rest</td>
+<td>重置增强类，将被greys增强过的类全部还原</td>
+</tr>
+<tr>
+<td>session</td>
+<td>查看当前会话</td>
+</tr>
+<tr>
+<td>jvm</td>
+<td>查看当前JVM的信息</td>
+</tr>
+</tbody>
+</table>
+<p>访问agent</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">telnet 10.57.17.146 3658   或  ./greys.sh 17602</span><br></pre></td></tr></table></figure>
+<p>查看JVM已加载的类信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc -df cn.fraudmetrix.norns.controller.ListValueController</span><br></pre></td></tr></table></figure>
+<p>查看类方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sm -d cn.fraudmetrix.norns.controller.ListValueController *</span><br></pre></td></tr></table></figure>
+<p>统计一段周期类方法执行情况（默认120s）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">monitor -c 5 *ListValueController queryCache</span><br></pre></td></tr></table></figure>
+<p>追踪方法执行链</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">trace cn.fraudmetrix.norns.controller.ListValueController queryCache</span><br></pre></td></tr></table></figure>
+<p>查看方法执行时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ptrace  -t -n 5 cn.fraudmetrix.norns.controller.ListValueController queryCache</span><br></pre></td></tr></table></figure>
+<p>查看入参</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -b cn.fraudmetrix.norns.controller.ListValueController queryCache &apos;&quot;partnerCode=&quot;+params[0]&apos;</span><br></pre></td></tr></table></figure>
+<p>查看返回值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">watch -s cn.fraudmetrix.norns.controller.ListValueController queryCache returnObj -x 4</span><br></pre></td></tr></table></figure>
+<p>统计方法执行时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tt -t -n 3 cn.fraudmetrix.norns.controller.ListValueController queryCache</span><br></pre></td></tr></table></figure>
+<p>重放请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tt -i 1055 -p</span><br></pre></td></tr></table></figure>
+<p>查看方法栈</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stack cn.fraudmetrix.norns.controller.ListValueController queryCache</span><br></pre></td></tr></table></figure>
+<p>参考地址：</p>
+<p><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/greys-pdf" target="_blank" rel="noopener">https://github.com/oldmanpushcart/greys-anatomy/wiki/greys-pdf</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/05/greys使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-cassandra使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/05/cassandra使用/">cassandra使用</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/05/cassandra使用/" class="archive-article-date">
+  	<time datetime="2018-09-05T07:26:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h4><p><a href="http://cassandra.apache.org/doc/latest/" target="_blank" rel="noopener">http://cassandra.apache.org/doc/latest/</a></p>
+<h4 id="二、下载地址"><a href="#二、下载地址" class="headerlink" title="二、下载地址"></a>二、下载地址</h4><p><a href="http://www.apache.org/dyn/closer.lua/cassandra/2.2.8/apache-cassandra-2.2.8-bin.tar.gz" target="_blank" rel="noopener">http://www.apache.org/dyn/closer.lua/cassandra/2.2.8/apache-cassandra-2.2.8-bin.tar.gz</a></p>
+<h4 id="三、启动"><a href="#三、启动" class="headerlink" title="三、启动"></a>三、启动</h4><p>1）进入~/apache-cassandra-2.2.8/bin 目录：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>./cassandra</td>
+<td>启动</td>
+</tr>
+<tr>
+<td>./cqlsh localhost</td>
+<td>连接cassandra</td>
+</tr>
+</tbody>
+</table>
+<p>2）执行<code>./cassandra</code> 启动命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">➜  bin ./cassandra</span><br><span class="line">INFO  13:10:18 Create new Keyspace: KSMetaData&#123;name=system_traces, strategyClass=SimpleStrategy, strategyOptions=&#123;replication_factor=2&#125;, cfMetaData=&#123;sessions=org.apache.cassandra.config.CFMetaData@758a3875[cfId=c5e99f16-8677-3914-b17e-960613512345,ksName=system_traces,cfName=sessions,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.ColumnToCollectionType(706172616d6574657273:org.apache.cassandra.db.marshal.MapType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type))),comment=tracing sessions,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=0,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.UUIDType,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=client, type=org.apache.cassandra.db.marshal.InetAddressType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=command, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=session_id, type=org.apache.cassandra.db.marshal.UUIDType, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=coordinator, type=org.apache.cassandra.db.marshal.InetAddressType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=request, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=started_at, type=org.apache.cassandra.db.marshal.TimestampType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=duration, type=org.apache.cassandra.db.marshal.Int32Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=parameters, type=org.apache.cassandra.db.marshal.MapType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type), kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false], events=org.apache.cassandra.config.CFMetaData@385c6d59[cfId=8826e8e9-e16a-3728-8753-3bc1fc713c25,ksName=system_traces,cfName=events,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.TimeUUIDType,org.apache.cassandra.db.marshal.UTF8Type),comment=tracing events,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=0,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.UUIDType,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=activity, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=thread, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=session_id, type=org.apache.cassandra.db.marshal.UUIDType, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=event_id, type=org.apache.cassandra.db.marshal.TimeUUIDType, kind=CLUSTERING_COLUMN, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=source, type=org.apache.cassandra.db.marshal.InetAddressType, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=source_elapsed, type=org.apache.cassandra.db.marshal.Int32Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false]&#125;, durableWrites=true, userTypes=org.apache.cassandra.config.UTMetaData@2d70e448&#125;</span><br><span class="line">INFO  13:10:18 Writing Memtable-schema_keyspaces@1730498753(0.261KiB serialized bytes, 7 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:18 Writing Memtable-schema_columnfamilies@1114064844(31.533KiB serialized bytes, 507 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:18 Writing Memtable-schema_columns@36217111(53.858KiB serialized bytes, 1065 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:18 Writing Memtable-schema_triggers@462323136(0.008KiB serialized bytes, 1 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:18 Writing Memtable-schema_usertypes@688388391(0.008KiB serialized bytes, 1 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:18 Writing Memtable-schema_functions@93851770(0.008KiB serialized bytes, 1 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:18 Writing Memtable-schema_aggregates@1817313611(0.008KiB serialized bytes, 1 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:18 Loading org.apache.cassandra.config.CFMetaData@a883085[cfId=c5e99f16-8677-3914-b17e-960613512345,ksName=system_traces,cfName=sessions,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.ColumnToCollectionType(706172616d6574657273:org.apache.cassandra.db.marshal.MapType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type))),comment=tracing sessions,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=0,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.UUIDType,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=client, type=org.apache.cassandra.db.marshal.InetAddressType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=command, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=session_id, type=org.apache.cassandra.db.marshal.UUIDType, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=coordinator, type=org.apache.cassandra.db.marshal.InetAddressType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=request, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=started_at, type=org.apache.cassandra.db.marshal.TimestampType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=duration, type=org.apache.cassandra.db.marshal.Int32Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=parameters, type=org.apache.cassandra.db.marshal.MapType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type), kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false]</span><br><span class="line">INFO  13:10:18 Initializing system_traces.sessions</span><br><span class="line">INFO  13:10:18 Loading org.apache.cassandra.config.CFMetaData@6d830a67[cfId=8826e8e9-e16a-3728-8753-3bc1fc713c25,ksName=system_traces,cfName=events,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.TimeUUIDType,org.apache.cassandra.db.marshal.UTF8Type),comment=tracing events,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=0,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.UUIDType,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=activity, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=session_id, type=org.apache.cassandra.db.marshal.UUIDType, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=thread, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=event_id, type=org.apache.cassandra.db.marshal.TimeUUIDType, kind=CLUSTERING_COLUMN, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=source, type=org.apache.cassandra.db.marshal.InetAddressType, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=source_elapsed, type=org.apache.cassandra.db.marshal.Int32Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false]</span><br><span class="line">INFO  13:10:18 Initializing system_traces.events</span><br><span class="line">INFO  13:10:19 Create new Keyspace: KSMetaData&#123;name=system_distributed, strategyClass=SimpleStrategy, strategyOptions=&#123;replication_factor=3&#125;, cfMetaData=&#123;parent_repair_history=org.apache.cassandra.config.CFMetaData@5cb7be55[cfId=deabd734-b99d-3b9c-92e5-fd92eb5abf14,ksName=system_distributed,cfName=parent_repair_history,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.ColumnToCollectionType(7265717565737465645f72616e676573:org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type),7375636365737366756c5f72616e676573:org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type),636f6c756d6e66616d696c795f6e616d6573:org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type))),comment=Repair history,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=0,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.TimeUUIDType,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=requested_ranges, type=org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type), kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=exception_message, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=keyspace_name, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=successful_ranges, type=org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type), kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=started_at, type=org.apache.cassandra.db.marshal.TimestampType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=finished_at, type=org.apache.cassandra.db.marshal.TimestampType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=exception_stacktrace, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=columnfamily_names, type=org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type), kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=parent_id, type=org.apache.cassandra.db.marshal.TimeUUIDType, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false], repair_history=org.apache.cassandra.config.CFMetaData@4b9e021f[cfId=759fffad-624b-3181-80ee-fa9a52d1f627,ksName=system_distributed,cfName=repair_history,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.TimeUUIDType,org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.ColumnToCollectionType(7061727469636970616e7473:org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.InetAddressType))),comment=Repair history,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=0,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type),minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=status, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=id, type=org.apache.cassandra.db.marshal.TimeUUIDType, kind=CLUSTERING_COLUMN, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=coordinator, type=org.apache.cassandra.db.marshal.InetAddressType, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=finished_at, type=org.apache.cassandra.db.marshal.TimestampType, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=participants, type=org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.InetAddressType), kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=exception_stacktrace, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=parent_id, type=org.apache.cassandra.db.marshal.TimeUUIDType, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=range_end, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=range_begin, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=exception_message, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=keyspace_name, type=org.apache.cassandra.db.marshal.UTF8Type, kind=PARTITION_KEY, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=started_at, type=org.apache.cassandra.db.marshal.TimestampType, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=columnfamily_name, type=org.apache.cassandra.db.marshal.UTF8Type, kind=PARTITION_KEY, componentIndex=1, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false]&#125;, durableWrites=true, userTypes=org.apache.cassandra.config.UTMetaData@467b6850&#125;</span><br><span class="line">INFO  13:10:19 Writing Memtable-schema_keyspaces@1850671951(0.143KiB serialized bytes, 3 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:19 Writing Memtable-schema_columnfamilies@405770394(3.464KiB serialized bytes, 46 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:19 Writing Memtable-schema_columns@1479973311(8.548KiB serialized bytes, 154 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:19 Loading org.apache.cassandra.config.CFMetaData@60869928[cfId=deabd734-b99d-3b9c-92e5-fd92eb5abf14,ksName=system_distributed,cfName=parent_repair_history,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.ColumnToCollectionType(7265717565737465645f72616e676573:org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type),7375636365737366756c5f72616e676573:org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type),636f6c756d6e66616d696c795f6e616d6573:org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type))),comment=Repair history,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=0,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.TimeUUIDType,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=requested_ranges, type=org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type), kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=exception_message, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=keyspace_name, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=successful_ranges, type=org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type), kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=started_at, type=org.apache.cassandra.db.marshal.TimestampType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=finished_at, type=org.apache.cassandra.db.marshal.TimestampType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=exception_stacktrace, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=columnfamily_names, type=org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type), kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=parent_id, type=org.apache.cassandra.db.marshal.TimeUUIDType, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false]</span><br><span class="line">INFO  13:10:19 Initializing system_distributed.parent_repair_history</span><br><span class="line">INFO  13:10:19 Loading org.apache.cassandra.config.CFMetaData@323fa569[cfId=759fffad-624b-3181-80ee-fa9a52d1f627,ksName=system_distributed,cfName=repair_history,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.TimeUUIDType,org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.ColumnToCollectionType(7061727469636970616e7473:org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.InetAddressType))),comment=Repair history,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=0,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type),minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=status, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=id, type=org.apache.cassandra.db.marshal.TimeUUIDType, kind=CLUSTERING_COLUMN, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=coordinator, type=org.apache.cassandra.db.marshal.InetAddressType, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=finished_at, type=org.apache.cassandra.db.marshal.TimestampType, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=participants, type=org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.InetAddressType), kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=exception_stacktrace, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=parent_id, type=org.apache.cassandra.db.marshal.TimeUUIDType, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=range_end, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=range_begin, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=exception_message, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=keyspace_name, type=org.apache.cassandra.db.marshal.UTF8Type, kind=PARTITION_KEY, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=started_at, type=org.apache.cassandra.db.marshal.TimestampType, kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=columnfamily_name, type=org.apache.cassandra.db.marshal.UTF8Type, kind=PARTITION_KEY, componentIndex=1, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false]</span><br><span class="line">INFO  13:10:19 Initializing system_distributed.repair_history</span><br><span class="line">INFO  13:10:19 Writing Memtable-local@1820980522(0.081KiB serialized bytes, 8 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:19 Writing Memtable-local@1300886093(8.380KiB serialized bytes, 259 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:19 Create new Keyspace: KSMetaData&#123;name=system_auth, strategyClass=SimpleStrategy, strategyOptions=&#123;replication_factor=1&#125;, cfMetaData=&#123;role_permissions=org.apache.cassandra.config.CFMetaData@2da8e456[cfId=3afbe79f-2194-31a7-add7-f5ab90d8ec9c,ksName=system_auth,cfName=role_permissions,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.ColumnToCollectionType(7065726d697373696f6e73:org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type))),comment=permissions granted to db roles,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=7776000,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.UTF8Type,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=resource, type=org.apache.cassandra.db.marshal.UTF8Type, kind=CLUSTERING_COLUMN, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=role, type=org.apache.cassandra.db.marshal.UTF8Type, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=permissions, type=org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type), kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false], roles=org.apache.cassandra.config.CFMetaData@7fd294cb[cfId=5bc52802-de25-35ed-aeab-188eecebb090,ksName=system_auth,cfName=roles,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.ColumnToCollectionType(6d656d6265725f6f66:org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type))),comment=role definitions,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=7776000,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.UTF8Type,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=role, type=org.apache.cassandra.db.marshal.UTF8Type, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=member_of, type=org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type), kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=salted_hash, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=can_login, type=org.apache.cassandra.db.marshal.BooleanType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=is_superuser, type=org.apache.cassandra.db.marshal.BooleanType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false], resource_role_permissons_index=org.apache.cassandra.config.CFMetaData@71c8e59a[cfId=5f2fbdad-91f1-3946-bd25-d5da3a5c35ec,ksName=system_auth,cfName=resource_role_permissons_index,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type),comment=index of db roles with permissions granted on a resource,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=7776000,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.UTF8Type,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=resource, type=org.apache.cassandra.db.marshal.UTF8Type, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=role, type=org.apache.cassandra.db.marshal.UTF8Type, kind=CLUSTERING_COLUMN, componentIndex=0, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false], role_members=org.apache.cassandra.config.CFMetaData@46408804[cfId=0ecdaa87-f8fb-3e60-88d1-74fb36fe5c0d,ksName=system_auth,cfName=role_members,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type),comment=role memberships lookup table,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=7776000,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.UTF8Type,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=role, type=org.apache.cassandra.db.marshal.UTF8Type, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=member, type=org.apache.cassandra.db.marshal.UTF8Type, kind=CLUSTERING_COLUMN, componentIndex=0, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false]&#125;, durableWrites=true, userTypes=org.apache.cassandra.config.UTMetaData@11c2113f&#125;</span><br><span class="line">INFO  13:10:19 Writing Memtable-schema_keyspaces@873579796(0.143KiB serialized bytes, 3 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:19 Writing Memtable-schema_columnfamilies@77400274(5.873KiB serialized bytes, 92 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:19 Writing Memtable-schema_columns@535165102(3.936KiB serialized bytes, 84 ops, 0%/0% of on/off-heap limit)</span><br><span class="line">INFO  13:10:19 Loading org.apache.cassandra.config.CFMetaData@2d39cd1[cfId=3afbe79f-2194-31a7-add7-f5ab90d8ec9c,ksName=system_auth,cfName=role_permissions,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.ColumnToCollectionType(7065726d697373696f6e73:org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type))),comment=permissions granted to db roles,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=7776000,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.UTF8Type,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=resource, type=org.apache.cassandra.db.marshal.UTF8Type, kind=CLUSTERING_COLUMN, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=role, type=org.apache.cassandra.db.marshal.UTF8Type, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=permissions, type=org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type), kind=REGULAR, componentIndex=1, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false]</span><br><span class="line">INFO  13:10:19 Initializing system_auth.role_permissions</span><br><span class="line">INFO  13:10:19 Loading org.apache.cassandra.config.CFMetaData@7c4ca95e[cfId=5f2fbdad-91f1-3946-bd25-d5da3a5c35ec,ksName=system_auth,cfName=resource_role_permissons_index,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type),comment=index of db roles with permissions granted on a resource,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=7776000,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.UTF8Type,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=resource, type=org.apache.cassandra.db.marshal.UTF8Type, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=role, type=org.apache.cassandra.db.marshal.UTF8Type, kind=CLUSTERING_COLUMN, componentIndex=0, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false]</span><br><span class="line">INFO  13:10:19 Initializing system_auth.resource_role_permissons_index</span><br><span class="line">INFO  13:10:19 Loading org.apache.cassandra.config.CFMetaData@5b017be3[cfId=5bc52802-de25-35ed-aeab-188eecebb090,ksName=system_auth,cfName=roles,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.ColumnToCollectionType(6d656d6265725f6f66:org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type))),comment=role definitions,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=7776000,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.UTF8Type,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=role, type=org.apache.cassandra.db.marshal.UTF8Type, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=member_of, type=org.apache.cassandra.db.marshal.SetType(org.apache.cassandra.db.marshal.UTF8Type), kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=salted_hash, type=org.apache.cassandra.db.marshal.UTF8Type, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=can_login, type=org.apache.cassandra.db.marshal.BooleanType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=is_superuser, type=org.apache.cassandra.db.marshal.BooleanType, kind=REGULAR, componentIndex=0, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false]</span><br><span class="line">INFO  13:10:19 Initializing system_auth.roles</span><br><span class="line">INFO  13:10:19 Loading org.apache.cassandra.config.CFMetaData@4aa13f0a[cfId=0ecdaa87-f8fb-3e60-88d1-74fb36fe5c0d,ksName=system_auth,cfName=role_members,cfType=Standard,comparator=org.apache.cassandra.db.marshal.CompositeType(org.apache.cassandra.db.marshal.UTF8Type,org.apache.cassandra.db.marshal.UTF8Type),comment=role memberships lookup table,readRepairChance=0.0,dcLocalReadRepairChance=0.0,gcGraceSeconds=7776000,defaultValidator=org.apache.cassandra.db.marshal.BytesType,keyValidator=org.apache.cassandra.db.marshal.UTF8Type,minCompactionThreshold=4,maxCompactionThreshold=32,columnMetadata=[ColumnDefinition&#123;name=role, type=org.apache.cassandra.db.marshal.UTF8Type, kind=PARTITION_KEY, componentIndex=null, indexName=null, indexType=null&#125;, ColumnDefinition&#123;name=member, type=org.apache.cassandra.db.marshal.UTF8Type, kind=CLUSTERING_COLUMN, componentIndex=0, indexName=null, indexType=null&#125;],compactionStrategyClass=class org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy,compactionStrategyOptions=&#123;&#125;,compressionParameters=&#123;sstable_compression=org.apache.cassandra.io.compress.LZ4Compressor&#125;,bloomFilterFpChance=0.01,memtableFlushPeriod=3600000,caching=&#123;&quot;keys&quot;:&quot;ALL&quot;, &quot;rows_per_partition&quot;:&quot;NONE&quot;&#125;,defaultTimeToLive=0,minIndexInterval=128,maxIndexInterval=2048,speculativeRetry=99.0PERCENTILE,droppedColumns=&#123;&#125;,triggers=[],isDense=false]</span><br><span class="line">INFO  13:10:19 Initializing system_auth.role_members</span><br></pre></td></tr></table></figure>
+<p>3）执行 <code>./cqlsh localhost</code>命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">➜  bin ./cqlsh localhost</span><br><span class="line">Connected to Test Cluster at localhost:9042.</span><br><span class="line">[cqlsh 5.0.1 | Cassandra 2.2.8 | CQL spec 3.3.1 | Native protocol v4]</span><br><span class="line">Use HELP for help.</span><br><span class="line">cqlsh&gt; SELECT cluster_name, listen_address FROM system.local;</span><br><span class="line"></span><br><span class="line"> cluster_name | listen_address</span><br><span class="line">--------------+----------------</span><br><span class="line"> Test Cluster |      127.0.0.1</span><br><span class="line"></span><br><span class="line">(1 rows)</span><br><span class="line">cqlsh&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="四、Java-API"><a href="#四、Java-API" class="headerlink" title="四、Java API"></a>四、Java API</h4><p>1) 创建 keyspace</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE KEYSPACE demodb WITH REPLICATION = &#123;&apos;class&apos; : &apos;SimpleStrategy&apos;,&apos;replication_factor&apos;: 3&#125;;</span><br></pre></td></tr></table></figure>
+<p>2) 创建 table</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE users (</span><br><span class="line">  user_name varchar,</span><br><span class="line">  password varchar,</span><br><span class="line">  gender varchar</span><br><span class="line">  PRIMARY KEY (user_name));</span><br></pre></td></tr></table></figure>
+<p>3) 插入数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO users (user_name, password, gender) VALUES (&apos;zhengyong&apos;, &apos;1234&apos;, &apos;male&apos;);</span><br></pre></td></tr></table></figure>
+<p>4) Java查询</p>
+<p>参考：<a href="https://github.com/datastax/java-driver" target="_blank" rel="noopener">https://github.com/datastax/java-driver</a></p>
+<p>手册：<a href="http://docs.datastax.com/en/developer/java-driver/3.1/manual/" target="_blank" rel="noopener">http://docs.datastax.com/en/developer/java-driver/3.1/manual/</a></p>
+<p>maven依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;com.datastax.cassandra&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;cassandra-driver-core&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;3.1.0&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<p>cassandra客户端：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line">package cassandra;</span><br><span class="line"></span><br><span class="line">import com.datastax.driver.core.Cluster;</span><br><span class="line">import com.datastax.driver.core.ResultSet;</span><br><span class="line">import com.datastax.driver.core.Session;</span><br><span class="line">import com.google.common.base.Preconditions;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created by zhengyong on 16/12/12.</span><br><span class="line"> */</span><br><span class="line">public class CassandraClient &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * cluster</span><br><span class="line">     */</span><br><span class="line">    private static Cluster cluster;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * session</span><br><span class="line">     */</span><br><span class="line">    private static Session session;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * table name</span><br><span class="line">     */</span><br><span class="line">    private String         keyspace;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * server ip</span><br><span class="line">     */</span><br><span class="line">    private String         serverIp;</span><br><span class="line"></span><br><span class="line">    public  CassandraClient(String keyspace, String serverIp) &#123;</span><br><span class="line">        this.keyspace = keyspace;</span><br><span class="line">        this.serverIp = serverIp;</span><br><span class="line">        createClient();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 创建cassandra客户端</span><br><span class="line">     */</span><br><span class="line">    public void createClient() &#123;</span><br><span class="line"></span><br><span class="line">        Preconditions.checkNotNull(keyspace, &quot;keyspace must be not null.&quot;);</span><br><span class="line">        Preconditions.checkNotNull(serverIp, &quot;serverIp must be not null.&quot;);</span><br><span class="line"></span><br><span class="line">        if (session == null) &#123;</span><br><span class="line">            synchronized (this) &#123;</span><br><span class="line">                cluster = Cluster.builder().addContactPoint(serverIp).build(); // (1)</span><br><span class="line">                session = cluster.connect(keyspace); // (2)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public ResultSet query(String sql) &#123;</span><br><span class="line">        return session.execute(sql);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void close() &#123;</span><br><span class="line">        if (session != null) &#123;</span><br><span class="line">            session.close();</span><br><span class="line">        &#125;</span><br><span class="line">        if (null != cluster) &#123;</span><br><span class="line">            cluster.close();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getKeyspace() &#123;</span><br><span class="line">        return keyspace;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setKeyspace(String keyspace) &#123;</span><br><span class="line">        this.keyspace = keyspace;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public String getServerIp() &#123;</span><br><span class="line">        return serverIp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setServerIp(String serverIp) &#123;</span><br><span class="line">        this.serverIp = serverIp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行main函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">package cassandra;</span><br><span class="line"></span><br><span class="line">import com.datastax.driver.core.ResultSet;</span><br><span class="line">import com.datastax.driver.core.Row;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created by zhengyong on 16/12/12.</span><br><span class="line"> */</span><br><span class="line">public class CassandraTest &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        CassandraClient cassandraClient = new CassandraClient(&quot;demodb&quot;,&quot;127.0.0.1&quot;);</span><br><span class="line">        ResultSet rs = cassandraClient.query(&quot;select * from users&quot;);</span><br><span class="line"></span><br><span class="line">        Row row = rs.one();</span><br><span class="line">        System.out.println(&quot;row=&quot; + row.toString());</span><br><span class="line">        System.out.println(&quot;user_name=&quot; + row.getString(&quot;user_name&quot;));</span><br><span class="line">        System.out.println(&quot;password=&quot; + row.getString(&quot;password&quot;));</span><br><span class="line">        System.out.println(&quot;gender=&quot; + row.getString(&quot;gender&quot;));</span><br><span class="line"></span><br><span class="line">        cassandraClient.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2016-12-12 23:43:21,812 - com.datastax.driver.core.ClockFactory -0    [main] INFO   - Using native clock to generate timestamps.</span><br><span class="line">2016-12-12 23:43:22,212 - com.datastax.driver.core.NettyUtil -400  [main] INFO   - Did not find Netty&apos;s native epoll transport in the classpath, defaulting to NIO.</span><br><span class="line">2016-12-12 23:43:23,678 - com.datastax.driver.core.policies.DCAwareRoundRobinPolicy -1866 [main] INFO   - Using data-center name &apos;datacenter1&apos; for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)</span><br><span class="line">2016-12-12 23:43:23,683 - com.datastax.driver.core.Cluster -1871 [main] INFO   - New Cassandra host /127.0.0.1:9042 added</span><br><span class="line">row=Row[zhengyong, 1232, male, 1234, 111, state]</span><br><span class="line">user_name=zhengyong</span><br><span class="line">password=1234</span><br><span class="line">gender=male</span><br><span class="line">state=state</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">➜  bin ./cqlsh localhost</span><br><span class="line">cqlsh&gt; use demodb;</span><br><span class="line">cqlsh:demodb&gt; select * from users ;</span><br><span class="line"></span><br><span class="line"> user_name | gender | password </span><br><span class="line">-----------+--------+----------</span><br><span class="line">  zhangsan |   male |    admin </span><br><span class="line"> zhengyong |   male |     1234 </span><br><span class="line">      root |   male |     root </span><br><span class="line"> zhangsan2 |   male |    admin </span><br><span class="line">      lisi |   male |    admin </span><br><span class="line"> zhangsan1 |   male |    admin </span><br><span class="line"></span><br><span class="line">(6 rows)</span><br></pre></td></tr></table></figure>
+<p>CREATE TABLE users (<br>  username varchar,<br>  password varchar,<br>  gender varchar,<br>  PRIMARY KEY (username));</p>
+<dependency><br>    <groupid>cn.fraudmetrix</groupid><br>    <artifactid>euler-dal-mysql</artifactid><br>    <version>1.0.2</version><br></dependency><br><dependency><br>    <groupid>cn.fraudmetrix</groupid><br>    <artifactid>euler-dal-graphdb</artifactid><br>    <version>1.0.3</version><br></dependency><br><dependency><br>    <groupid>cn.fraudmetrix</groupid><br>    <artifactid>euler-share</artifactid><br>    <version>1.0.2</version><br></dependency>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">cassandra</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/05/cassandra使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Hexo部署github博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/04/Hexo部署github博客/">Hexo部署github博客</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/04/Hexo部署github博客/" class="archive-article-date">
+  	<time datetime="2018-09-04T03:05:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h4><blockquote>
+<p>使用github创建一个仓库为github.io就能变成一个使用域名能够访问的博客站点。然后我们通过Hexo创建文章，发布到<code>github.io</code>仓库，Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。Hexo能够快速生成博客和部署博客，使创建博客更加简单。</p>
+</blockquote>
+<h4 id="二、安装清单（Mac-OS）"><a href="#二、安装清单（Mac-OS）" class="headerlink" title="二、安装清单（Mac OS）"></a>二、安装清单（Mac OS）</h4><table>
+<thead>
+<tr>
+<th>安装环境</th>
+<th>安装原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>git</td>
+<td>给github上传文章</td>
+</tr>
+<tr>
+<td>Node.js</td>
+<td>Hexo基于Node.js开发</td>
+</tr>
+<tr>
+<td>Hexo</td>
+<td>生成博客静态页面</td>
+</tr>
+</tbody>
+</table>
+<h4 id="三、创建github-io网站"><a href="#三、创建github-io网站" class="headerlink" title="三、创建github.io网站"></a>三、创建github.io网站</h4><p>1）点击New repository</p>
+<p>2）输入Repository name，必需为<code>username.github.io</code>格式。username替换为用户名</p>
+<p>3）点击按钮Create repository</p>
+<p>4）进入仓库<code>username.github.io</code>,点击<code>setting</code>,找到<code>GitHub Pages</code>模块</p>
+<p>5）点击<code>choose a theme</code>选择一个页面主题</p>
+<p>6）访问<code>https://username.github.io</code>就可以访问博客网站了</p>
+<h4 id="四、安装git"><a href="#四、安装git" class="headerlink" title="四、安装git"></a>四、安装git</h4><p>下载安装：<a href="http://sourceforge.net/projects/git-osx-installer/" target="_blank" rel="noopener">http://sourceforge.net/projects/git-osx-installer/</a></p>
+<p>验证是否安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ git version</span><br><span class="line">git version 2.15.0</span><br></pre></td></tr></table></figure>
+<h4 id="五、安装Node-js"><a href="#五、安装Node-js" class="headerlink" title="五、安装Node.js"></a>五、安装Node.js</h4><p>下载安装：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></p>
+<p>验证是否安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ node -v</span><br><span class="line">v8.9.4</span><br></pre></td></tr></table></figure>
+<h4 id="六、安装Hexo"><a href="#六、安装Hexo" class="headerlink" title="六、安装Hexo"></a>六、安装Hexo</h4><p>安装命令: <code>npm install -g hexo-cli</code></p>
+<p>验证是否安装成功：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ hexo -v</span><br><span class="line">hexo-cli: 1.1.0</span><br><span class="line">os: Darwin 17.3.0 darwin x64</span><br><span class="line">http_parser: 2.7.0</span><br><span class="line">node: 8.9.4</span><br><span class="line">v8: 6.1.534.50</span><br><span class="line">uv: 1.15.0</span><br><span class="line">zlib: 1.2.11</span><br><span class="line">ares: 1.10.1-DEV</span><br><span class="line">modules: 57</span><br><span class="line">nghttp2: 1.25.0</span><br><span class="line">openssl: 1.0.2n</span><br><span class="line">icu: 59.1</span><br><span class="line">unicode: 9.0</span><br><span class="line">cldr: 31.0.1</span><br><span class="line">tz: 2017b</span><br></pre></td></tr></table></figure>
+<h4 id="七、创建本地博文服务"><a href="#七、创建本地博文服务" class="headerlink" title="七、创建本地博文服务"></a>七、创建本地博文服务</h4><ol>
+<li>然后创建一个空文件夹, 比如：<code>hexo-blog</code></li>
+<li>进入<code>hexo-blog</code>目录</li>
+<li>执行<code>hexo init</code>初始化博客站点，如果最后一行显示<code>Start blogging with Hexo!</code>，代表创建成功</li>
+<li>执行<code>hexo server</code> 启动博文站点</li>
+<li>访问<code>http://localhost:4000</code>就能打开博文了</li>
+<li><code>Ctrl+C</code>关闭服务器</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ mkdir hexo-blog</span><br><span class="line">➜  ~ cd hexo-blog</span><br><span class="line">➜  hexo-blog hexo init</span><br><span class="line">INFO  Cloning hexo-starter to ~/hexo-blog</span><br><span class="line">Cloning into &apos;/Users/zhengyong/hexo-blog&apos;...</span><br><span class="line">remote: Counting objects: 68, done.</span><br><span class="line">remote: Total 68 (delta 0), reused 0 (delta 0), pack-reused 67</span><br><span class="line">Unpacking objects: 100% (68/68), done.</span><br><span class="line">Submodule &apos;themes/landscape&apos; (https://github.com/hexojs/hexo-theme-landscape.git) registered for path &apos;themes/landscape&apos;</span><br><span class="line">Cloning into &apos;/Users/zhengyong/hexo-blog/themes/landscape&apos;...</span><br><span class="line">remote: Counting objects: 838, done.</span><br><span class="line">remote: Compressing objects: 100% (6/6), done.</span><br><span class="line">remote: Total 838 (delta 1), reused 3 (delta 0), pack-reused 832</span><br><span class="line">Receiving objects: 100% (838/838), 2.55 MiB | 90.00 KiB/s, done.</span><br><span class="line">Resolving deltas: 100% (441/441), done.</span><br><span class="line">Submodule path &apos;themes/landscape&apos;: checked out &apos;73a23c51f8487cfcd7c6deec96ccc7543960d350&apos;</span><br><span class="line">INFO  Install dependencies</span><br><span class="line">npm WARN deprecated titlecase@1.1.2: no longer maintained</span><br><span class="line">npm WARN deprecated postinstall-build@5.0.3: postinstall-build&apos;s behavior is now built into npm! You should migrate off of postinstall-build and use the new `prepare` lifecycle script with npm 5.0.0 or greater.</span><br><span class="line"></span><br><span class="line">&gt; fsevents@1.2.4 install /Users/zhengyong/hexo-blog/node_modules/fsevents</span><br><span class="line">&gt; node install</span><br><span class="line"></span><br><span class="line">[fsevents] Success: &quot;/Users/zhengyong/hexo-blog/node_modules/fsevents/lib/binding/Release/node-v57-darwin-x64/fse.node&quot; already installed</span><br><span class="line">Pass --update-binary to reinstall or --build-from-source to recompile</span><br><span class="line"></span><br><span class="line">&gt; nunjucks@3.1.3 postinstall /Users/zhengyong/hexo-blog/node_modules/nunjucks</span><br><span class="line">&gt; node postinstall-build.js src</span><br><span class="line"></span><br><span class="line">npm notice created a lockfile as package-lock.json. You should commit this file.</span><br><span class="line">added 464 packages in 28.659s</span><br><span class="line">INFO  Start blogging with Hexo!</span><br><span class="line">➜  hexo-blog hexo server</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.</span><br><span class="line">^CINFO  Good bye</span><br></pre></td></tr></table></figure>
+<h4 id="八、Hexo关联github"><a href="#八、Hexo关联github" class="headerlink" title="八、Hexo关联github"></a>八、Hexo关联github</h4><p>1）进入<code>hexo-blog</code>根目录</p>
+<p>2）安装<code>npm install hexo-deployer-git --save</code>，用Hexo发布博文</p>
+<p>3）打开<code>hexo-blog</code>根目录下的_config.yml，拉倒最下面, 修改Deployment方式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: http://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/username/username.github.io</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<p>4）进入<code>hexo-blog</code>根目录执行如下命令（参考: <code>https://hexo.io/zh-cn/docs/commands</code>)，第一次上传可能会让你输入git的用户名和密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+<p>5）如果成功，就可以打开 <code>http://username.github.io</code>,<code>username</code>替换成自己用户名</p>
+<h4 id="九、使用Hexo创建和发布文章"><a href="#九、使用Hexo创建和发布文章" class="headerlink" title="九、使用Hexo创建和发布文章"></a>九、使用Hexo创建和发布文章</h4><p>1) 进入<code>hexo-blog</code>根目录</p>
+<p>2) 创建文章命令：<code>hexo new &quot;文章标题&quot;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">➜  blog hexo new &quot;Hexo部署github博客&quot;</span><br><span class="line">INFO  Created: ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md</span><br></pre></td></tr></table></figure>
+<p>3) 打开编辑<code>Hexo部署github博客.md</code>文件进行<code>Markdown</code>编辑</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open ~/Documents/GitHub/hexo-blog/source/_posts/Hexo部署github博客.md`</span><br></pre></td></tr></table></figure>
+<p>4）发布文章：<code>hexo d -g</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">➜  blog hexo d -g</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Files loaded in 922 ms</span><br><span class="line">INFO  Generated: index.html</span><br><span class="line">INFO  Generated: archives/2018/09/index.html</span><br><span class="line">INFO  Generated: archives/index.html</span><br><span class="line">INFO  Generated: 2018/09/03/hello-world/index.html</span><br><span class="line">INFO  Generated: archives/2018/index.html</span><br><span class="line">INFO  Generated: 2018/09/03/my-first-hexo-blog/index.html</span><br><span class="line">INFO  Generated: fonts/iconfont.8c627f.woff</span><br><span class="line">INFO  Generated: fonts/iconfont.45d7ee.svg</span><br><span class="line">INFO  Generated: fonts/iconfont.16acc2.ttf</span><br><span class="line">INFO  Generated: fonts/default-skin.b257fa.svg</span><br><span class="line">INFO  Generated: fonts/tooltip.4004ff.svg</span><br><span class="line">INFO  Generated: img/default-skin.png</span><br><span class="line">INFO  Generated: img/scrollbar_arrow.png</span><br><span class="line">INFO  Generated: img/preloader.gif</span><br><span class="line">INFO  Generated: fonts/iconfont.b322fa.eot</span><br><span class="line">INFO  Generated: slider.e37972.js</span><br><span class="line">INFO  Generated: mobile.992cbe.js</span><br><span class="line">INFO  Generated: main.0cf68a.js</span><br><span class="line">INFO  Generated: main.0cf68a.css</span><br><span class="line">INFO  Generated: 2018/09/04/Hexo部署github博客/index.html</span><br><span class="line">INFO  20 files generated in 475 ms</span><br><span class="line">INFO  Deploying: git</span><br><span class="line">INFO  Clearing .deploy_git folder...</span><br><span class="line">INFO  Copying files from public folder...</span><br><span class="line">INFO  Copying files from extend dirs...</span><br><span class="line">warning: CRLF will be replaced by LF in fonts/tooltip.4004ff.svg.</span><br><span class="line">The file will have its original line endings in your working directory.</span><br><span class="line">[master d1c205f] Site updated: 2018-09-04 11:11:08</span><br><span class="line"> 6 files changed, 835 insertions(+)</span><br><span class="line"> create mode 100644 2018/09/04/Hexo部署github博客/index.html</span><br><span class="line">To https://github.com/zyongjava/zyongjava.github.io</span><br><span class="line">   3f0aab7..d1c205f  HEAD -&gt; master</span><br><span class="line">Branch &apos;master&apos; set up to track remote branch &apos;master&apos; from &apos;https://github.com/zyongjava/zyongjava.github.io&apos;.</span><br><span class="line">INFO  Deploy done: git</span><br></pre></td></tr></table></figure>
+<h4 id="十、参考文献"><a href="#十、参考文献" class="headerlink" title="十、参考文献"></a>十、参考文献</h4><ol>
+<li><a href="https://www.jianshu.com/p/863f3f2d1733" target="_blank" rel="noopener">https://www.jianshu.com/p/863f3f2d1733</a></li>
+<li><a href="https://hexo.io/zh-cn/docs/commands" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/commands</a></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Hexo blog github</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/04/Hexo部署github博客/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/03/hello-world/">Hello World</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/03/hello-world/" class="archive-article-date">
+  	<time datetime="2018-09-03T08:46:32.294Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/03/hello-world/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
   
 
 
@@ -368,8 +1016,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

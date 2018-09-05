@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://blog.csdn.net/zhengyong15984285623?viewmode=contents">
-  <title>awk使用 | 郑勇-个人博客</title>
+  <title>Spark基础 | 郑勇-个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="首先建立文本log.txt: 12342 this is a test3 Are you like awkThis&amp;apos;s a test10 There are orange,apple,mongo A. 每行按空格或TAB分割，输出文本中的1、4项, 例如：awk &amp;#39;{print $1,$4}&amp;#39; log.txt123456$ awk &amp;apos;&amp;#123;print $1">
-<meta name="keywords" content="awk">
+  <meta name="description" content="一、前言使用语言：scala 术语：Resilient Distributed Datasets（RDD） 二、弹性分布式数据集(RDD)定义Spark围绕着弹性分布式数据集（RDD）的概念，是一个可以并行操作的容错容器集合，有两种方法来创建RDD：   并行化驱动程序中的现有集合     外部存储系统中的数据集，例如共享文件系统，HDFS，HBase或提供Hadoop InputFormat的任">
+<meta name="keywords" content="spark,scala">
 <meta property="og:type" content="article">
-<meta property="og:title" content="awk使用">
-<meta property="og:url" content="https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/awk使用/index.html">
+<meta property="og:title" content="Spark基础">
+<meta property="og:url" content="https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/Spark基础/index.html">
 <meta property="og:site_name" content="郑勇-个人博客">
-<meta property="og:description" content="首先建立文本log.txt: 12342 this is a test3 Are you like awkThis&amp;apos;s a test10 There are orange,apple,mongo A. 每行按空格或TAB分割，输出文本中的1、4项, 例如：awk &amp;#39;{print $1,$4}&amp;#39; log.txt123456$ awk &amp;apos;&amp;#123;print $1">
+<meta property="og:description" content="一、前言使用语言：scala 术语：Resilient Distributed Datasets（RDD） 二、弹性分布式数据集(RDD)定义Spark围绕着弹性分布式数据集（RDD）的概念，是一个可以并行操作的容错容器集合，有两种方法来创建RDD：   并行化驱动程序中的现有集合     外部存储系统中的数据集，例如共享文件系统，HDFS，HBase或提供Hadoop InputFormat的任">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-05T07:30:00.578Z">
+<meta property="og:updated_time" content="2018-09-05T07:36:35.242Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="awk使用">
-<meta name="twitter:description" content="首先建立文本log.txt: 12342 this is a test3 Are you like awkThis&amp;apos;s a test10 There are orange,apple,mongo A. 每行按空格或TAB分割，输出文本中的1、4项, 例如：awk &amp;#39;{print $1,$4}&amp;#39; log.txt123456$ awk &amp;apos;&amp;#123;print $1">
+<meta name="twitter:title" content="Spark基础">
+<meta name="twitter:description" content="一、前言使用语言：scala 术语：Resilient Distributed Datasets（RDD） 二、弹性分布式数据集(RDD)定义Spark围绕着弹性分布式数据集（RDD）的概念，是一个可以并行操作的容错容器集合，有两种方法来创建RDD：   并行化驱动程序中的现有集合     外部存储系统中的数据集，例如共享文件系统，HDFS，HBase或提供Hadoop InputFormat的任">
   
     <link rel="alternative" href="/atom.xml" title="郑勇-个人博客" type="application/atom+xml">
   
@@ -154,49 +154,258 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-awk使用" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Spark基础" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      awk使用
+      Spark基础
     </h1>
   
 
         
-        <a href="/2018/09/05/awk使用/" class="archive-article-date">
-  	<time datetime="2018-09-05T07:29:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
+        <a href="/2018/09/05/Spark基础/" class="archive-article-date">
+  	<time datetime="2018-09-05T07:36:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>首先建立文本<code>log.txt</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2 this is a test</span><br><span class="line">3 Are you like awk</span><br><span class="line">This&apos;s a test</span><br><span class="line">10 There are orange,apple,mongo</span><br></pre></td></tr></table></figure>
-<h4 id="A-每行按空格或TAB分割，输出文本中的1、4项-例如：awk-39-print-1-4-39-log-txt"><a href="#A-每行按空格或TAB分割，输出文本中的1、4项-例如：awk-39-print-1-4-39-log-txt" class="headerlink" title="A. 每行按空格或TAB分割，输出文本中的1、4项, 例如：awk &#39;{print $1,$4}&#39; log.txt"></a>A. 每行按空格或TAB分割，输出文本中的1、4项, 例如：<code>awk &#39;{print $1,$4}&#39; log.txt</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ awk &apos;&#123;print $1,$4&#125;&apos; log.txt</span><br><span class="line"></span><br><span class="line">2 a</span><br><span class="line">3 like</span><br><span class="line">This&apos;s</span><br><span class="line">10 orange,apple,mongo</span><br></pre></td></tr></table></figure>
-<h4 id="B-使用”-”分割，例如：awk-F-39-print-1-2-39-log-txt"><a href="#B-使用”-”分割，例如：awk-F-39-print-1-2-39-log-txt" class="headerlink" title="B. 使用”,”分割，例如：awk -F, &#39;{print $1,$2}&#39; log.txt"></a>B. 使用”,”分割，例如：<code>awk -F, &#39;{print $1,$2}&#39; log.txt</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ awk -F, &apos;&#123;print $1,$2&#125;&apos; log.txt</span><br><span class="line"></span><br><span class="line">2 this is a test</span><br><span class="line">3 Are you like awk</span><br><span class="line">This&apos;s a test</span><br><span class="line">10 There are orange apple</span><br></pre></td></tr></table></figure>
-<h4 id="C-使用多个分隔符-先使用空格分割，然后对分割结果再使用”-”分割-例如：awk-F-39-39-39-print-1-2-5-39-log-txt"><a href="#C-使用多个分隔符-先使用空格分割，然后对分割结果再使用”-”分割-例如：awk-F-39-39-39-print-1-2-5-39-log-txt" class="headerlink" title="C. 使用多个分隔符.先使用空格分割，然后对分割结果再使用”,”分割. 例如：awk -F &#39;[ ,]&#39;  &#39;{print $1,$2,$5}&#39; log.txt"></a>C. 使用多个分隔符.先使用空格分割，然后对分割结果再使用”,”分割. 例如：<code>awk -F &#39;[ ,]&#39;  &#39;{print $1,$2,$5}&#39; log.txt</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ awk -F &apos;[ ,]&apos;  &apos;&#123;print $1,$2,$5&#125;&apos; log.txt</span><br><span class="line"></span><br><span class="line">2 this test</span><br><span class="line">3 Are awk</span><br><span class="line">This&apos;s a</span><br><span class="line">10 There apple</span><br></pre></td></tr></table></figure>
-<h4 id="D-使用awk-v设置变量a-1-例如：awk-v-a-1-39-print-1-1-a-39-log-txt"><a href="#D-使用awk-v设置变量a-1-例如：awk-v-a-1-39-print-1-1-a-39-log-txt" class="headerlink" title="D. 使用awk -v设置变量a=1, 例如：awk -v a=1 &#39;{print $1,$1+a}&#39; log.txt"></a>D. 使用<code>awk -v</code>设置变量<code>a=1</code>, 例如：<code>awk -v a=1 &#39;{print $1,$1+a}&#39; log.txt</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ awk -v a=1 &apos;&#123;print $1,$1+a&#125;&apos; log.txt</span><br><span class="line"></span><br><span class="line">2 3</span><br><span class="line">3 4</span><br><span class="line">This&apos;s 1</span><br><span class="line">10 11</span><br></pre></td></tr></table></figure>
-<h4 id="E-使用脚本，例如：awk-f-cal-awk-log-txt"><a href="#E-使用脚本，例如：awk-f-cal-awk-log-txt" class="headerlink" title="E. 使用脚本，例如：awk -f cal.awk log.txt"></a>E. 使用脚本，例如：<code>awk -f cal.awk log.txt</code></h4><h4 id="F-awk使用运算符"><a href="#F-awk使用运算符" class="headerlink" title="F. awk使用运算符"></a>F. awk使用运算符</h4><p>1) 过滤第一例大于2的行. 例如：<code>awk &#39;$1&gt;2&#39; log.txt</code></p>
-<p>2) 过滤第一列大于2并且第二列等于’Are’的行. 例如：<code>awk &#39;$1&gt;2 &amp;&amp; $2==&quot;Are&quot; {print $1,$2,$3}&#39; log.txt</code></p>
-<h4 id="G-awk正使用则表达式"><a href="#G-awk正使用则表达式" class="headerlink" title="G. awk正使用则表达式"></a>G. awk正使用则表达式</h4><p>注意：~ 表示模式开始。// 中是模式。</p>
-<p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 输出第二列包含 &quot;th&quot;，并打印第二列与第四列</span><br><span class="line">$ awk &apos;$2 ~ /th/ &#123;print $2,$4&#125;&apos; log.txt</span><br><span class="line">---------------------------------------------</span><br><span class="line">this a</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 输出包含&quot;re&quot; 的行</span><br><span class="line">$ awk &apos;/re/ &apos; log.txt</span><br><span class="line">---------------------------------------------</span><br><span class="line">3 Are you like awk</span><br><span class="line">10 There are orange,apple,mongo</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 忽略大小写</span><br><span class="line">$ awk &apos;BEGIN&#123;IGNORECASE=1&#125; /this/&apos; log.txt</span><br><span class="line">---------------------------------------------</span><br><span class="line">2 this is a test</span><br><span class="line">This&apos;s a test</span><br></pre></td></tr></table></figure>
-<h4 id="H-awk脚本"><a href="#H-awk脚本" class="headerlink" title="H. awk脚本"></a>H. awk脚本</h4><p>BEGIN{ 这里面放的是执行前的语句 }</p>
-<p>END {这里面放的是处理完所有的行后要执行的语句 }</p>
-<p>{这里面放的是处理每一行时要执行的语句}</p>
-<p>例如<code>cal.awk</code>内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/awk -f</span><br><span class="line">#运行前</span><br><span class="line">BEGIN &#123;</span><br><span class="line">    math = 0</span><br><span class="line">    english = 0</span><br><span class="line">    computer = 0</span><br><span class="line"> </span><br><span class="line">    printf &quot;NAME    NO.   MATH  ENGLISH  COMPUTER   TOTAL\n&quot;</span><br><span class="line">    printf &quot;---------------------------------------------\n&quot;</span><br><span class="line">&#125;</span><br><span class="line">#运行中</span><br><span class="line">&#123;</span><br><span class="line">    math+=$3</span><br><span class="line">    english+=$4</span><br><span class="line">    computer+=$5</span><br><span class="line">    printf &quot;%-6s %-6s %4d %8d %8d %8d\n&quot;, $1, $2, $3,$4,$5, $3+$4+$5</span><br><span class="line">&#125;</span><br><span class="line">#运行后</span><br><span class="line">END &#123;</span><br><span class="line">    printf &quot;---------------------------------------------\n&quot;</span><br><span class="line">    printf &quot;  TOTAL:%10d %8d %8d \n&quot;, math, english, computer</span><br><span class="line">    printf &quot;AVERAGE:%10.2f %8.2f %8.2f\n&quot;, math/NR, english/NR, computer/NR</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>G. 统计行数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk &apos;/error/&apos; app.log | awk &apos;END &#123;print NR&#125;&apos;</span><br></pre></td></tr></table></figure>
-<p>或者：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -c &apos;error&apos; app.log</span><br></pre></td></tr></table></figure>
-<p>参考：<a href="http://www.runoob.com/linux/linux-comm-awk.html" target="_blank" rel="noopener">http://www.runoob.com/linux/linux-comm-awk.html</a></p>
+        <h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h3><p>使用语言：scala</p>
+<p>术语：Resilient Distributed Datasets（RDD）</p>
+<h3 id="二、弹性分布式数据集-RDD-定义"><a href="#二、弹性分布式数据集-RDD-定义" class="headerlink" title="二、弹性分布式数据集(RDD)定义"></a>二、弹性分布式数据集(RDD)定义</h3><p>Spark围绕着弹性分布式数据集（RDD）的概念，是一个可以并行操作的容错容器集合，有两种方法来创建RDD：</p>
+<blockquote>
+<ol>
+<li>并行化驱动程序中的现有集合</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>外部存储系统中的数据集，例如共享文件系统，HDFS，HBase或提供Hadoop InputFormat的任何数据源。</li>
+</ol>
+</blockquote>
+<p>1） Parallelized Collections(并行数据集)</p>
+<p>使用SparkContext的parallelize方法创建一个并行数据集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val data = Array(1, 2, 3, 4, 5)</span><br><span class="line">val distData = sc.parallelize(data)</span><br></pre></td></tr></table></figure>
+<p>2） 外部数据集(共享文件系统,HDFS,HBase…)</p>
+<p>下面使用SparkContext的textFile方法创建一个文件数据集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val distFile = sc.textFile(&quot;data.txt&quot;)</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<blockquote>
+<ol>
+<li>Spark的所有基于文件的输入方法（包括textFile）都支持在目录，压缩文件和通配符上运行。 例如，可以使用textFile（“/ my / directory”），textFile（“/ my / directory / <em>。txt”）和textFile（“/ my / directory / </em>.gz”）。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>textFile方法还接受可选的第二个参数，用于控制文件的分区数。 默认情况下，Spark为文件的每个块创建一个分区（HDFS默认为128MB），但你也可以通过传递一个更大的值来请求更多的分区。 请注意，您不能有比块更少的分区。</li>
+</ol>
+</blockquote>
+<h3 id="三、弹性分布式数据集-RDD-操作"><a href="#三、弹性分布式数据集-RDD-操作" class="headerlink" title="三、弹性分布式数据集(RDD)操作"></a>三、弹性分布式数据集(RDD)操作</h3><p>####（一）定义</p>
+<p>RDD支持两种类型的操作：</p>
+<blockquote>
+<ol>
+<li>转换（Transformations）：从现有数据集创建新数据集。例如：map是一个通过一个函数传递每个数据集元素的变换，并返回一个表示结果的新RDD</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>动作（Actions）：在数据集上运行计算后向驱动程序返回值。例如：reduce是使用一些函数聚合RDD的所有元素并将最终结果返回到驱动程序的动作</li>
+</ol>
+</blockquote>
+<p>Spark中的所有转换都是懒惰的，因为它们不会马上计算它们的结果。相反，他们只记住应用于一些基础数据集（例如文件）的转换。仅当操作需要将结果返回到驱动程序时才会计算转换。这种设计使Spark能够更有效地运行。例如，我们可以认识到通过map创建的数据集将在reduce中使用，并且只返回reduce到驱动程序的结果，而不是较大的映射数据集。</p>
+<p>默认情况下，每次对其执行操作时，都可以重新计算每个已转换的RDD。但是，您还可以使用persist（或cache）方法在内存中持久化RDD，在这种情况下，Spark会保留集群上的元素，以便在下次查询时更快地访问。还支持在磁盘上持久存储RDD，或者在多个节点上复制RDD。</p>
+<p>####（二）基础</p>
+<p>为了说明RDD基础知识，下面示列程序解释说明： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val lines = sc.textFile(&quot;data.txt&quot;) </span><br><span class="line">val lineLengths = lines.map(s =&gt; s.length)</span><br><span class="line">val totalLength = lineLengths.reduce((a, b) =&gt; a + b)</span><br><span class="line">lineLengths.persist()</span><br></pre></td></tr></table></figure>
+<ol>
+<li>第一行定义来自外部文件的基本RDD。 此数据集未加载到内存中或以其他方式处理：行仅仅是指向文件的指针。</li>
+<li>第二行定义lineLength作为地图变换的结果。 同样，由于懒惰，lineLength不会立即计算</li>
+<li>第三行我们运行reduce，这是一个动作。 在这一点上，Spark将计算分解为在单独的机器上运行的任务，每个机器运行它的一部分映射和本地缩减，只返回它的驱动程序的答案。</li>
+<li>第四行持久化数据到内存</li>
+</ol>
+<p>####（三）RDD类型说明</p>
+<p>下面表格列除了<code>Spark</code>支持的一下常用<code>Transformations</code> ：</p>
+<table>
+<thead>
+<tr>
+<th>转换（Transformation）</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>map(func)</td>
+<td>返回通过函数func传递源的每个元素形成的新的分布式数据集</td>
+<td></td>
+</tr>
+<tr>
+<td>filter(func)</td>
+<td>返回通过选择func返回true的源的那些元素形成的新数据集</td>
+<td></td>
+</tr>
+<tr>
+<td>flatMap(func)</td>
+<td>与map类似，但每个输入项可以映射到0个或更多的输出项（因此func应该返回一个Seq，而不是一个单独的项）</td>
+<td></td>
+</tr>
+<tr>
+<td>mapPartitions(func)</td>
+<td>类似于map，但是在RDD的每个分区（块）上单独运行，因此当在类型T的RDD上运行时，func必须是Iterator <t> =&gt; Iterator <u>类型</u></t></td>
+<td></td>
+</tr>
+<tr>
+<td>mapPartitionsWithIndex(func)</td>
+<td>与mapPartition类似，但是也为func提供了表示分区索引的整数值，因此当在类型为T的RDD上运行时，func必须是类型（Int，Iterator <t>）=&gt; Iterator =&gt; Iterator <u>类型</u></t></td>
+<td></td>
+</tr>
+<tr>
+<td>sample(withReplacement, fraction, seed)</td>
+<td>使用给定的随机数发生器种子，采样具有或不具有替换的数据的分数</td>
+<td></td>
+</tr>
+<tr>
+<td>union(otherDataset)</td>
+<td>返回一个新的数据集，其中包含源数据集和参数中元素的并集</td>
+<td></td>
+</tr>
+<tr>
+<td>intersection(otherDataset)</td>
+<td>返回一个包含源数据集和参数中的元素交集的新RDD</td>
+<td></td>
+</tr>
+<tr>
+<td>distinct([numTasks]))</td>
+<td>返回包含源数据集的不同元素的新数据集</td>
+<td>去重元素</td>
+</tr>
+<tr>
+<td>groupByKey([numTasks])</td>
+<td>当在（K，V）对的数据集上调用时，返回（K，Iterable <v>）对的数据集。注意：如果要进行分组以便对每个键执行聚合（例如总和或平均值），使用reduceByKey或aggregateByKey将产生更好的性能。注意：默认情况下，输出中的并行性级别取决于父RDD的分区数。 您可以传递可选的numTasks参数，以设置不同数量的任务。</v></td>
+<td></td>
+</tr>
+<tr>
+<td>reduceByKey(func, [numTasks])</td>
+<td>当在（K，V）对的数据集上调用时，返回（K，V）对的数据集，其中使用给定的reduce函数func聚集每个键的值，其必须是类型（V，V）=&gt; V.像groupByKey一样，reduce任务的数量可以通过可选的第二个参数来配置</td>
+<td></td>
+</tr>
+<tr>
+<td>aggregateByKey(zeroValue)(seqOp, combOp, [numTasks])</td>
+<td>当在（K，V）对的数据集上调用时，返回（K，U）对的数据集，其中使用给定的组合函数和中性“零”值来聚合每个键的值。 允许与输入值类型不同的聚合值类型，同时避免不必要的分配。 像groupByKey中一样，reduce任务的数量可以通过可选的第二个参数来配置</td>
+<td></td>
+</tr>
+<tr>
+<td>sortByKey([ascending], [numTasks])</td>
+<td>当对（K，V）对的数据集（其中K实现Ordered）调用时，返回按升序或降序按键排序的（K，V）对的数据集，如布尔值升序参数中所指定。</td>
+<td></td>
+</tr>
+<tr>
+<td>join(otherDataset, [numTasks])</td>
+<td>当对类型（K，V）和（K，W）的数据集调用时，返回具有每个键的所有元素对的（K，（V，W））对的数据集。 外部联接通过leftOuterJoin，rightOuterJoin和fullOuterJoin支持</td>
+<td></td>
+</tr>
+<tr>
+<td>cogroup(otherDataset, [numTasks])</td>
+<td>当对类型（K，V）和（K，W）的数据集调用时，返回（K，（Iterable <v>，Iterable <w>））元组的数据集。 此操作也称为groupWith。</w></v></td>
+<td></td>
+</tr>
+<tr>
+<td>cartesian(otherDataset)</td>
+<td>当调用类型T和U的数据集时，返回（T，U）对（所有元素对）的数据集</td>
+<td></td>
+</tr>
+<tr>
+<td>pipe(command, [envVars])</td>
+<td>通过shell命令管道RDD的每个分区，例如。 一个Perl或bash脚本。 RDD元素被写入进程的stdin，并且行输出到其stdout作为字符串的RDD返回</td>
+<td></td>
+</tr>
+<tr>
+<td>coalesce(numPartitions)</td>
+<td>将RDD中的分区数减少到numPartitions。 用于在过滤掉大型数据集后更有效地运行操作</td>
+<td></td>
+</tr>
+<tr>
+<td>repartition(numPartitions)</td>
+<td>随机重新刷新RDD中的数据以创建更多或更少的分区，并在它们之间进行平衡。 这总是在网络上刷新所有数据</td>
+<td></td>
+</tr>
+<tr>
+<td>repartitionAndSortWithinPartitions(partitioner)</td>
+<td>根据给定的分区器重新分区RDD，并在每个生成的分区中按其键排序记录。 这比调用重新分区然后在每个分区内排序更有效，因为它可以将排序推入shuffle机器</td>
+</tr>
+</tbody>
+</table>
+<p>下面表格列除了<code>Spark</code>支持的一下常用<code>Actions</code> ：</p>
+<table>
+<thead>
+<tr>
+<th>动作（Action）</th>
+<th>说明</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reduce(func)</td>
+<td>使用函数func（它接受两个参数并返回一个）聚合数据集的元素。 函数应该是可交换和关联的，以便它可以被并行正确计算</td>
+<td></td>
+</tr>
+<tr>
+<td>collect()</td>
+<td>在驱动程序中将数据集的所有元素作为数组返回。 这在返回足够小的数据子集的过滤器或其他操作之后通常是有用的</td>
+<td></td>
+</tr>
+<tr>
+<td>count()</td>
+<td>返回数据集中的元素数</td>
+<td></td>
+</tr>
+<tr>
+<td>first()</td>
+<td>返回数据集的第一个元素,类似于take(1)</td>
+<td></td>
+</tr>
+<tr>
+<td>take(n)</td>
+<td>返回数组中前n个元素的数组</td>
+<td></td>
+</tr>
+<tr>
+<td>takeSample(withReplacement, num, [seed])</td>
+<td>返回具有数据集的num个元素的随机样本的数组，具有或不具有替换，可选地预指定随机数生成器种子</td>
+<td></td>
+</tr>
+<tr>
+<td>takeOrdered(n, [ordering])</td>
+<td>使用它们的自然顺序或自定义比较器返回RDD的前n个元素将数据集的元素作为文本文件（或一组文本文件）写入本地文件系统，HDFS或任何其他Hadoop支持的文件系统中的给定目录中。 Spark将对每个元素调用toString将其转换为文件中的一行文本</td>
+<td></td>
+</tr>
+<tr>
+<td>saveAsSequenceFile(path) (Java and Scala)</td>
+<td>将数据集的元素作为Hadoop SequenceFile写入本地文件系统，HDFS或任何其他Hadoop支持的文件系统中的给定路径中。 这可以在实现Hadoop的Writable接口的键值对的RDD上使用。 在Scala中，它也可以隐式转换为Writable的类型（Spark包括基本类型的转换，如Int，Double，String等）</td>
+<td></td>
+</tr>
+<tr>
+<td>saveAsObjectFile(path) (Java and Scala)</td>
+<td>使用Java序列化以简单的格式编写数据集的元素，然后可以使用SparkContext.objectFile()加载</td>
+<td></td>
+</tr>
+<tr>
+<td>countByKey()</td>
+<td>仅适用于（K，V）类型的RDD。 返回具有每个键的计数的（K，Int）对的哈希</td>
+<td></td>
+</tr>
+<tr>
+<td>foreach(func)</td>
+<td>对数据集的每个元素运行函数func。 这通常会有其他影响，例如更新累加器或与外部存储系统交互。注意：修改除foreach（）之外的累加器以外的变量可能会导致未定义的行为</td>
+</tr>
+</tbody>
+</table>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>参考：<a href="http://spark.apache.org/docs/latest/programming-guide.html" target="_blank" rel="noopener">http://spark.apache.org/docs/latest/programming-guide.html</a></p>
 
       
 
@@ -231,7 +440,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">awk</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spark,scala</a>
         		</li>
       		
 		</ul>
@@ -287,7 +496,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/awk使用/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/Spark基础/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -301,18 +510,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/05/dubbo泛化调用/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/09/05/spring初始化bean循环依赖解决/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          dubbo泛化调用
+          spring初始化bean循环依赖解决
         
       </div>
     </a>
   
   
-    <a href="/2018/09/05/greys使用/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">greys在线问题诊断工具</div>
+    <a href="/2018/09/05/wireshark抓包过虑规则/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">wireshark抓包过虑规则</div>
       <i class="icon-circle-right"></i>
     </a>
   
