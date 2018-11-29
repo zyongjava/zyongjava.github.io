@@ -155,6 +155,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java-JWT-生成token" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/29/Java-JWT-生成token/">Java JWT 生成token</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/29/Java-JWT-生成token/" class="archive-article-date">
+  	<time datetime="2018-11-29T09:34:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Java-JWT-生成token"><a href="#Java-JWT-生成token" class="headerlink" title="Java JWT 生成token"></a>Java JWT 生成token</h3><blockquote>
+<p>JSON Web Token for Java and Android</p>
+</blockquote>
+<h4 id="Maven依赖"><a href="#Maven依赖" class="headerlink" title="Maven依赖"></a>Maven依赖</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jjwt-api&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.10.5&lt;/version&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jjwt-impl&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.10.5&lt;/version&gt;</span><br><span class="line">    &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;io.jsonwebtoken&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jjwt-jackson&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;0.10.5&lt;/version&gt;</span><br><span class="line">    &lt;scope&gt;runtime&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="JWT参数说明"><a href="#JWT参数说明" class="headerlink" title="JWT参数说明"></a>JWT参数说明</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">iss: jwt签发者</span><br><span class="line">sub: jwt所面向的用户</span><br><span class="line">aud: 接收jwt的一方</span><br><span class="line">exp: jwt的过期时间，这个过期时间必须要大于签发时间</span><br><span class="line">nbf: 定义在什么时间之前，该jwt都是不可用的.</span><br><span class="line">iat: jwt的签发时间</span><br><span class="line">jti: jwt的唯一身份标识，主要用来作为一次性token,从而回避重放攻击。</span><br></pre></td></tr></table></figure>
+<h4 id="JWT-简单代码实现"><a href="#JWT-简单代码实现" class="headerlink" title="JWT 简单代码实现"></a>JWT 简单代码实现</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">package jwt;</span><br><span class="line"></span><br><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line">import io.jsonwebtoken.*;</span><br><span class="line">import io.jsonwebtoken.security.Keys;</span><br><span class="line"></span><br><span class="line">import java.security.Key;</span><br><span class="line">import java.util.Date;</span><br><span class="line">import java.util.UUID;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * &lt;p&gt;JWT 生成token&lt;/p&gt;</span><br><span class="line"> *</span><br><span class="line"> * @author: zhengyong Date: 2018/11/29 Time: 下午4:48</span><br><span class="line"> */</span><br><span class="line">public class JwtTest &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 利用JWT生成token</span><br><span class="line">     *</span><br><span class="line">     * @return token</span><br><span class="line">     */</span><br><span class="line">    public static String generateToken(Key key) &#123;</span><br><span class="line">        /**</span><br><span class="line">         // 以下算法过程是注释伪代码步骤</span><br><span class="line">         String header = &quot;&#123;\&quot;alg\&quot;:\&quot;HS256\&quot;&#125;&quot;;</span><br><span class="line">         String body = &quot;&#123;\&quot;sub\&quot;:\&quot;Joe\&quot;&#125;&quot;;</span><br><span class="line">         String encodedHeader = base64URLEncode( header.getBytes(&quot;UTF-8&quot;));</span><br><span class="line">         String encodedClaims = base64URLEncode( claims.getBytes(&quot;UTF-8&quot;) );</span><br><span class="line">         String concatenated = encodedHeader + &quot;.&quot; + encodedClaims;</span><br><span class="line">         Key key = getMySecretKey();</span><br><span class="line">         byte[] signature = hmacSha256( concatenated, key );</span><br><span class="line">         String jws = concatenated + &apos;.&apos; + base64URLEncode( signature );</span><br><span class="line">         **/</span><br><span class="line">        // We need a signing key, so we&apos;ll create one just for this example. Usually</span><br><span class="line">        // the key would be read from your application configuration instead.</span><br><span class="line">        String jws = Jwts.builder()</span><br><span class="line">                .setIssuer(&quot;me&quot;)</span><br><span class="line">                .setSubject(&quot;Bob&quot;)</span><br><span class="line">                .setAudience(&quot;you&quot;)</span><br><span class="line">//                .setExpiration(expiration) //a java.util.Date</span><br><span class="line">//                .setNotBefore(notBefore) //a java.util.Date</span><br><span class="line">                .setIssuedAt(new Date()) // for example, now</span><br><span class="line">                .setId(UUID.randomUUID().toString()).signWith(key).compact(); //just an example id</span><br><span class="line">        return jws;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 验证token</span><br><span class="line">     */</span><br><span class="line">    public static Jws validateToken(String jwsToken, Key key) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line"></span><br><span class="line">            Jws&lt;Claims&gt; claimsJws = Jwts.parser().setSigningKey(key).parseClaimsJws(jwsToken);</span><br><span class="line">            //OK, we can trust this JWT</span><br><span class="line">            return claimsJws;</span><br><span class="line">        &#125; catch (JwtException e) &#123;</span><br><span class="line">            //don&apos;t trust the JWT!</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;error&quot;);</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);</span><br><span class="line">        // 生成token</span><br><span class="line">        String token = generateToken(key);</span><br><span class="line">        System.out.println(&quot;token:&quot; + token);</span><br><span class="line"></span><br><span class="line">        // 解析验证token</span><br><span class="line">        Jws jws = validateToken(token, key);</span><br><span class="line">        System.out.println(JSON.toJSONString(jws));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="参考地址"><a href="#参考地址" class="headerlink" title="参考地址"></a>参考地址</h3><p><a href="https://github.com/jwtk/jjwt" target="_blank" rel="noopener">https://github.com/jwtk/jjwt</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/29/Java-JWT-生成token/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-spring-cache基于redis实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -927,89 +996,6 @@
 
 
   
-    <article id="post-MySQL事务级别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/05/MySQL事务级别/">MySQL事务级别</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/05/MySQL事务级别/" class="archive-article-date">
-  	<time datetime="2018-09-05T07:41:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>幻读：事务1读取数据时，事务2增加并提交，事务1再次读取数据时，可以看到事务B新增的数据。</p>
-<p>不可重复读：事务1读取数据时，事务2修改并提交该数据，事务1再次读取事务时，可以看到事务B修改后的记录</p>
-<p>脏读：事务1更新了记录，但没有提交，事务2读取了更新后的行，然后事务T1回滚，现在T2读取无效。</p>
-<h4 id="事务级别"><a href="#事务级别" class="headerlink" title="事务级别"></a>事务级别</h4><ol>
-<li>read uncommit：可能出现脏读，幻读，不可重复读</li>
-<li>read commit : 不允许出现脏读，可能出现幻读，不可重复读</li>
-<li>repeaable commit : 不会出现脏读、不可重复读，可能出现幻读</li>
-<li>seralizeable : 不会出现脏读，幻读，不可重复读</li>
-</ol>
-<p><a href="http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html" target="_blank" rel="noopener">http://www.cnblogs.com/hustcat/archive/2009/10/28/1591648.html</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/05/MySQL事务级别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1108,11 +1094,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">mockito</a>
+                <a href="javascript:void(0)" class="js-tag color2">drools</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">drools</a>
+                <a href="javascript:void(0)" class="js-tag color3">mockito</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1121,10 +1107,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1140,35 +1122,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">cassandra</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">schema</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">wireshark</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">swagger</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1180,7 +1138,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">dubbo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">elasticsearch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">cassandra</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">schema</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">swagger</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wireshark</a>
               </li>
             
             <div class="clearfix"></div>
