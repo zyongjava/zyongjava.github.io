@@ -9,14 +9,14 @@
   <title>JVM性能查看分析 | 郑勇-个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="一、uptime查看系统负载 12[admin@10-57-19-253 ~]$ uptime 16:34:16 up 36 days,  5:49,  1 user,  load average: 0.00, 0.01, 0.05 解析： 123416:34:16    //当前系统时间up 1 day,  5:49 //持续运行时间,时间越大，说明你的机器越稳定。 1 users  //用户连">
-<meta name="keywords" content="java">
+<meta name="keywords" content="jvm,top,jstat,jmap,jstack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM性能查看分析">
 <meta property="og:url" content="https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/12/04/JVM性能查看分析/index.html">
 <meta property="og:site_name" content="郑勇-个人博客">
 <meta property="og:description" content="一、uptime查看系统负载 12[admin@10-57-19-253 ~]$ uptime 16:34:16 up 36 days,  5:49,  1 user,  load average: 0.00, 0.01, 0.05 解析： 123416:34:16    //当前系统时间up 1 day,  5:49 //持续运行时间,时间越大，说明你的机器越稳定。 1 users  //用户连">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-12-04T09:07:55.296Z">
+<meta property="og:updated_time" content="2018-12-04T09:11:36.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM性能查看分析">
 <meta name="twitter:description" content="一、uptime查看系统负载 12[admin@10-57-19-253 ~]$ uptime 16:34:16 up 36 days,  5:49,  1 user,  load average: 0.00, 0.01, 0.05 解析： 123416:34:16    //当前系统时间up 1 day,  5:49 //持续运行时间,时间越大，说明你的机器越稳定。 1 users  //用户连">
@@ -231,6 +231,33 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">top</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">jstat</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">jmap</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">jstack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -497,6 +524,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">scala</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">top</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">jstat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">jmap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">jstack</a>
               </li>
             
             <div class="clearfix"></div>
