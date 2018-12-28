@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://blog.csdn.net/zhengyong15984285623?viewmode=contents">
-  <title>HashMap(JDK-1.8) | 郑勇-个人博客</title>
+  <title>经典技术文章概览 | 郑勇-个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一：resize扩容  当前table Node数组赋给临时变量，并记录老table的初始化容量和加载因子 如果老初始化容量大于0，新表初始化容量直接扩大为原来的2倍 循环老table，对新table赋值     1) 如果如果链表只有一个，则进行直接赋值newTab[e.hash &amp;amp; (newCap - 1)] = e      2）如果红黑二叉树：……     3）链表赋值，如果新表位">
-<meta name="keywords" content="HashMap">
+  <meta name="description" content="以下是我平时阅读发现比较有深度的文章；做个记录    文章标题 地址     RPC原理 http://www.cnblogs.com/LBSer/p/4853234.html   NIO理解 http://www.cnblogs.com/LBSer/p/4622749.html   Netty系列之Netty高性能之道 http://www.infoq.com/cn/articles/netty">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HashMap(JDK-1.8)">
-<meta property="og:url" content="https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/HashMap-JDK-1-8/index.html">
+<meta property="og:title" content="经典技术文章概览">
+<meta property="og:url" content="https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/12/28/经典技术文章概览/index.html">
 <meta property="og:site_name" content="郑勇-个人博客">
-<meta property="og:description" content="一：resize扩容  当前table Node数组赋给临时变量，并记录老table的初始化容量和加载因子 如果老初始化容量大于0，新表初始化容量直接扩大为原来的2倍 循环老table，对新table赋值     1) 如果如果链表只有一个，则进行直接赋值newTab[e.hash &amp;amp; (newCap - 1)] = e      2）如果红黑二叉树：……     3）链表赋值，如果新表位">
+<meta property="og:description" content="以下是我平时阅读发现比较有深度的文章；做个记录    文章标题 地址     RPC原理 http://www.cnblogs.com/LBSer/p/4853234.html   NIO理解 http://www.cnblogs.com/LBSer/p/4622749.html   Netty系列之Netty高性能之道 http://www.infoq.com/cn/articles/netty">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-05T07:52:47.298Z">
+<meta property="og:updated_time" content="2018-12-28T07:35:19.469Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HashMap(JDK-1.8)">
-<meta name="twitter:description" content="一：resize扩容  当前table Node数组赋给临时变量，并记录老table的初始化容量和加载因子 如果老初始化容量大于0，新表初始化容量直接扩大为原来的2倍 循环老table，对新table赋值     1) 如果如果链表只有一个，则进行直接赋值newTab[e.hash &amp;amp; (newCap - 1)] = e      2）如果红黑二叉树：……     3）链表赋值，如果新表位">
+<meta name="twitter:title" content="经典技术文章概览">
+<meta name="twitter:description" content="以下是我平时阅读发现比较有深度的文章；做个记录    文章标题 地址     RPC原理 http://www.cnblogs.com/LBSer/p/4853234.html   NIO理解 http://www.cnblogs.com/LBSer/p/4622749.html   Netty系列之Netty高性能之道 http://www.infoq.com/cn/articles/netty">
   
     <link rel="alternative" href="/atom.xml" title="郑勇-个人博客" type="application/atom+xml">
   
@@ -154,52 +154,122 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-HashMap-JDK-1-8" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-经典技术文章概览" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      HashMap(JDK-1.8)
+      经典技术文章概览
     </h1>
   
 
         
-        <a href="/2018/09/05/HashMap-JDK-1-8/" class="archive-article-date">
-  	<time datetime="2018-09-05T07:43:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
+        <a href="/2018/12/28/经典技术文章概览/" class="archive-article-date">
+  	<time datetime="2018-12-28T07:34:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="一：resize扩容"><a href="#一：resize扩容" class="headerlink" title="一：resize扩容"></a>一：resize扩容</h4><blockquote>
-<ol>
-<li>当前table Node数组赋给临时变量，并记录老table的初始化容量和加载因子</li>
-<li>如果老初始化容量大于0，新表初始化容量直接扩大为原来的2倍</li>
-<li>循环老table，对新table赋值</li>
-</ol>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>1) 如果如果链表只有一个，则进行直接赋值<code>newTab[e.hash &amp; (newCap - 1)] = e</code> </p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>2）如果红黑二叉树：……</p>
-</blockquote>
-</blockquote>
-<blockquote>
-<blockquote>
-<p>3）链表赋值，如果新表位置变化<code>e.hash &amp; oldCap) == 0</code>, 则老表数据在新表位置为（老数组位置i+老数组容量oldCap）</p>
-</blockquote>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line">final Node&lt;K, V&gt;[] resize() &#123;</span><br><span class="line">      Node&lt;K, V&gt;[] oldTab = table;</span><br><span class="line">      int oldCap = (oldTab == null) ? 0 : oldTab.length;// 数组长度</span><br><span class="line">      int oldThr = threshold;// 临界值</span><br><span class="line">      int newCap, newThr = 0;</span><br><span class="line">      if (oldCap &gt; 0) &#123;</span><br><span class="line">          // 扩容</span><br><span class="line">          if (oldCap &gt;= MAXIMUM_CAPACITY) &#123;</span><br><span class="line">              // 原数组长度大于最大容量(1073741824) 则将threshold设为Integer.MAX_VALUE=2147483647</span><br><span class="line">              // 接近MAXIMUM_CAPACITY的两倍</span><br><span class="line">              threshold = Integer.MAX_VALUE;</span><br><span class="line">              return oldTab;</span><br><span class="line">          &#125; else if ((newCap = oldCap &lt;&lt; 1) &lt; MAXIMUM_CAPACITY &amp;&amp; oldCap &gt;= DEFAULT_INITIAL_CAPACITY) &#123;</span><br><span class="line">              // 新数组长度 是原来的2倍，</span><br><span class="line">              // 临界值也扩大为原来2倍</span><br><span class="line">              newThr = oldThr &lt;&lt; 1;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125; else if (oldThr &gt; 0) &#123;</span><br><span class="line">          // 如果原来的thredshold大于0则将容量设为原来的thredshold</span><br><span class="line">          // 在第一次带参数初始化时候会有这种情况</span><br><span class="line">          newCap = oldThr;</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">          // 在默认无参数初始化会有这种情况</span><br><span class="line">          newCap = DEFAULT_INITIAL_CAPACITY;// 16</span><br><span class="line">          newThr = (int) (DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);// 0.75*16=12</span><br><span class="line">      &#125;</span><br><span class="line">      if (newThr == 0) &#123;</span><br><span class="line">          // 如果新 的容量 ==0</span><br><span class="line">          float ft = (float) newCap * loadFactor;// loadFactor 哈希加载因子 默认0.75,可在初始化时传入,16*0.75=12 可以放12个键值对</span><br><span class="line">          newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (float) MAXIMUM_CAPACITY ? (int) ft : Integer.MAX_VALUE);</span><br><span class="line">      &#125;</span><br><span class="line">      threshold = newThr;// 将临界值设置为新临界值</span><br><span class="line">      @SuppressWarnings(&#123; &quot;rawtypes&quot;, &quot;unchecked&quot; &#125;)</span><br><span class="line">      // 扩容</span><br><span class="line">      Node&lt;K, V&gt;[] newTab = (Node&lt;K, V&gt;[]) new Node[newCap];</span><br><span class="line">      table = newTab;</span><br><span class="line">      // 如果原来的table有数据，则将数据复制到新的table中</span><br><span class="line">      if (oldTab != null) &#123;</span><br><span class="line">          // 根据容量进行循环整个数组，将非空元素进行复制</span><br><span class="line">          for (int j = 0; j &lt; oldCap; ++j) &#123;</span><br><span class="line">              Node&lt;K, V&gt; e;</span><br><span class="line">              // 获取数组的第j个元素</span><br><span class="line">              if ((e = oldTab[j]) != null) &#123;</span><br><span class="line">                  oldTab[j] = null;</span><br><span class="line">                  // 如果链表只有一个，则进行直接赋值</span><br><span class="line">                  if (e.next == null)</span><br><span class="line">                      // e.hash &amp; (newCap - 1) 确定元素存放位置</span><br><span class="line">                      newTab[e.hash &amp; (newCap - 1)] = e;</span><br><span class="line">                  //  此处省略红黑树</span><br><span class="line">                  else &#123;</span><br><span class="line">                      // 进行链表复制</span><br><span class="line">                      // 方法比较特殊： 它并没有重新计算元素在数组中的位置</span><br><span class="line">                      // 而是采用了 原始位置加原数组长度的方法计算得到位置</span><br><span class="line">                      Node&lt;K, V&gt; loHead = null, loTail = null;</span><br><span class="line">                      Node&lt;K, V&gt; hiHead = null, hiTail = null;</span><br><span class="line">                      Node&lt;K, V&gt; next;</span><br><span class="line">                      do &#123;</span><br><span class="line">                          next = e.next;</span><br><span class="line">                          // 注意：不是(e.hash &amp; (oldCap-1));而是(e.hash &amp; oldCap)</span><br><span class="line"></span><br><span class="line">                          // (e.hash &amp; oldCap) 得到的是 元素的在数组中的位置是否需要移动,示例如下</span><br><span class="line">                          // 示例1：</span><br><span class="line">                          // e.hash=10 0000 1010</span><br><span class="line">                          // oldCap=16 0001 0000</span><br><span class="line">                          //   &amp;   =0  0000 0000       比较高位的第一位 0</span><br><span class="line">                          //结论：元素位置在扩容后数组中的位置没有发生改变</span><br><span class="line"></span><br><span class="line">                          // 示例2：</span><br><span class="line">                          // e.hash=17 0001 0001</span><br><span class="line">                          // oldCap=16 0001 0000</span><br><span class="line">                          //   &amp;   =1  0001 0000      比较高位的第一位   1</span><br><span class="line">                          //结论：元素位置在扩容后数组中的位置发生了改变，新的下标位置是原下标位置+原数组长度</span><br><span class="line"></span><br><span class="line">                          // (e.hash &amp; (oldCap-1)) 得到的是下标位置,示例如下</span><br><span class="line">                          //   e.hash=10 0000 1010</span><br><span class="line">                          // oldCap-1=15 0000 1111</span><br><span class="line">                          //      &amp;  =10 0000 1010</span><br><span class="line"></span><br><span class="line">                          //   e.hash=17 0001 0001</span><br><span class="line">                          // oldCap-1=15 0000 1111</span><br><span class="line">                          //      &amp;  =1  0000 0001</span><br><span class="line"></span><br><span class="line">                          //新下标位置</span><br><span class="line">                          //   e.hash=17 0001 0001</span><br><span class="line">                          // newCap-1=31 0001 1111    newCap=32</span><br><span class="line">                          //      &amp;  =17 0001 0001    1+oldCap = 1+16</span><br><span class="line"></span><br><span class="line">                          //元素在重新计算hash之后，因为n变为2倍，那么n-1的mask范围在高位多1bit(红色)，因此新的index就会发生这样的变化：</span><br><span class="line">                          // 0000 0001-&gt;0001 0001</span><br><span class="line"></span><br><span class="line">                          if ((e.hash &amp; oldCap) == 0) &#123;</span><br><span class="line">                              // 如果原元素位置没有发生变化</span><br><span class="line">                              if (loTail == null)</span><br><span class="line">                                  loHead = e;// 确定首元素</span><br><span class="line">                              // 第一次进入时     e   -&gt; aa  ; loHead-&gt; aa</span><br><span class="line">                              else</span><br><span class="line">                                  loTail.next = e;</span><br><span class="line">                              //第二次进入时        loTail-&gt; aa  ;    e  -&gt; bb ;  loTail.next -&gt; bb;而loHead和loTail是指向同一块内存的，所以loHead.next 地址为 bb  </span><br><span class="line">                              //第三次进入时        loTail-&gt; bb  ;    e  -&gt; cc ;  loTail.next 地址为 cc;loHead.next.next = cc</span><br><span class="line">                              loTail = e;</span><br><span class="line">                              // 第一次进入时         e   -&gt; aa  ; loTail-&gt; aa loTail指向了和  loHead相同的内存空间</span><br><span class="line">                              // 第二次进入时               e   -&gt; bb  ; loTail-&gt; bb loTail指向了和  loTail.next（loHead.next）相同的内存空间   loTail=loTail.next</span><br><span class="line">                              // 第三次进入时               e   -&gt; cc  ; loTail-&gt; cc loTail指向了和  loTail.next(loHead.next.next)相同的内存</span><br><span class="line">                          &#125; else &#123;</span><br><span class="line">                              //与上面同理</span><br><span class="line"></span><br><span class="line">                              if (hiTail == null)</span><br><span class="line">                                  hiHead = e;</span><br><span class="line">                              else</span><br><span class="line">                                  hiTail.next = e;</span><br><span class="line">                              hiTail = e;</span><br><span class="line">                          &#125;</span><br><span class="line">                      &#125; while ((e = next) != null);//这一块就是 旧链表迁移新链表</span><br><span class="line">                      //总结：1.8中 旧链表迁移新链表    链表元素相对位置没有变化; 实际是对对象的内存地址进行操作 </span><br><span class="line">                      //在1.7中  旧链表迁移新链表        如果在新表的数组索引位置相同，则链表元素会倒置</span><br><span class="line">                      if (loTail != null) &#123;</span><br><span class="line">                          loTail.next = null;// 将链表的尾节点 的next 设置为空</span><br><span class="line">                          newTab[j] = loHead;</span><br><span class="line">                      &#125;</span><br><span class="line">                      if (hiTail != null) &#123;</span><br><span class="line">                          hiTail.next = null;// 将链表的尾节点 的next 设置为空</span><br><span class="line">                          newTab[j + oldCap] = hiHead;</span><br><span class="line">                      &#125;</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      return newTab;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="二、线程安全"><a href="#二、线程安全" class="headerlink" title="二、线程安全"></a>二、线程安全</h4><p>JDK-1.7 线程不安全</p>
-<p>resize()导致线程不安全</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">transfer()函数逻辑</span><br><span class="line">1. 对索引数组中的元素遍历</span><br><span class="line">2. 对链表上的每一个节点遍历：用 next 取得要转移那个元素的下一个，将 e 转移到新 Hash 表的头部，使用头插法插入节点。</span><br><span class="line">3. 循环2，直到链表节点全部转移</span><br><span class="line">4. 循环1，直到所有索引数组全部转移</span><br><span class="line"></span><br><span class="line">经过这几步，我们会发现转移的时候是逆序的。假如转移前链表顺序是1-&gt;2-&gt;3，那么转移后就会变成3-&gt;2-&gt;1。这时候就有点头绪了，死锁问题不就是因为1-&gt;2的同时2-&gt;1造成的吗？所以，HashMap 的死锁问题就出在这个transfer()函数上。</span><br></pre></td></tr></table></figure>
+        <p>以下是我平时阅读发现比较有深度的文章；做个记录</p>
+<table>
+<thead>
+<tr>
+<th>文章标题</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RPC原理</td>
+<td><a href="http://www.cnblogs.com/LBSer/p/4853234.html" target="_blank" rel="noopener">http://www.cnblogs.com/LBSer/p/4853234.html</a></td>
+</tr>
+<tr>
+<td>NIO理解</td>
+<td><a href="http://www.cnblogs.com/LBSer/p/4622749.html" target="_blank" rel="noopener">http://www.cnblogs.com/LBSer/p/4622749.html</a></td>
+</tr>
+<tr>
+<td>Netty系列之Netty高性能之道</td>
+<td><a href="http://www.infoq.com/cn/articles/netty-high-performance" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/netty-high-performance</a></td>
+</tr>
+<tr>
+<td>自顶向下深入分析Netty</td>
+<td><a href="https://www.jianshu.com/p/da4398743b5a" target="_blank" rel="noopener">https://www.jianshu.com/p/da4398743b5a</a><br> <a href="https://www.jianshu.com/p/92c5092c5d3f" target="_blank" rel="noopener">https://www.jianshu.com/p/92c5092c5d3f</a></td>
+</tr>
+<tr>
+<td>分布式系统数据一致性</td>
+<td><a href="http://chuansong.me/n/286764951149" target="_blank" rel="noopener">http://chuansong.me/n/286764951149</a></td>
+</tr>
+<tr>
+<td>Java 并发开发,内置锁 Synchronized</td>
+<td><a href="http://www.kuqin.com/shuoit/20170217/353325.html?url_type=39&amp;object_type=webpage&amp;pos=1" target="_blank" rel="noopener">http://www.kuqin.com/shuoit/20170217/353325.html?url_type=39&amp;object_type=webpage&amp;pos=1</a></td>
+</tr>
+<tr>
+<td>Mysql聚簇索引和非聚簇索引原理</td>
+<td><a href="http://blog.csdn.net/lisuyibmd/article/details/53004848">http://blog.csdn.net/lisuyibmd/article/details/53004848</a></td>
+</tr>
+<tr>
+<td>大顶堆排序</td>
+<td><a href="http://m.blog.csdn.net/article/details?id=19039931" target="_blank" rel="noopener">http://m.blog.csdn.net/article/details?id=19039931</a></td>
+</tr>
+<tr>
+<td>Junit mockito 解耦合测试</td>
+<td><a href="https://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&amp;mid=2651478581&amp;idx=2&amp;sn=0b40e885c2fb81be865a2f7567713a3f&amp;chksm=bd25364a8a52bf5c6fc2f13af0429f8e07b60a47a07e95a657e1339aac229ae4ab5a3f54b059&amp;mpshare=1&amp;scene=1&amp;srcid=05249JIFI9paA3zVLBVrqi9g#rd" target="_blank" rel="noopener">https://mp.weixin.qq.com/s?__biz=MjM5NzMyMjAwMA==&amp;mid=2651478581&amp;idx=2&amp;sn=0b40e885c2fb81be865a2f7567713a3f&amp;chksm=bd25364a8a52bf5c6fc2f13af0429f8e07b60a47a07e95a657e1339aac229ae4ab5a3f54b059&amp;mpshare=1&amp;scene=1&amp;srcid=05249JIFI9paA3zVLBVrqi9g#rd</a></td>
+</tr>
+<tr>
+<td>Dubbo中消费者初始化的过程解析</td>
+<td><a href="http://cxis.me/2017/03/21/Dubbo%E4%B8%AD%E6%B6%88%E8%B4%B9%E8%80%85%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E8%BF%87%E7%A8%8B%E8%A7%A3%E6%9E%90/?utm_source=tuicool&amp;utm_medium=referral" target="_blank" rel="noopener">http://cxis.me/2017/03/21/Dubbo%E4%B8%AD%E6%B6%88%E8%B4%B9%E8%80%85%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E8%BF%87%E7%A8%8B%E8%A7%A3%E6%9E%90/?utm_source=tuicool&amp;utm_medium=referral</a></td>
+</tr>
+<tr>
+<td>海量数据处理算法—Bloom Filter</td>
+<td><a href="http://blog.csdn.net/hguisu/article/details/7866173">http://blog.csdn.net/hguisu/article/details/7866173</a></td>
+</tr>
+<tr>
+<td>Kafka剖析（一）：Kafka背景及架构介绍</td>
+<td><a href="http://www.infoq.com/cn/articles/kafka-analysis-part-1" target="_blank" rel="noopener">http://www.infoq.com/cn/articles/kafka-analysis-part-1</a></td>
+</tr>
+<tr>
+<td>一个java对象到底内存有多大</td>
+<td><a href="http://www.cnblogs.com/zhanjindong/p/3757767.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhanjindong/p/3757767.html</a></td>
+</tr>
+<tr>
+<td>关于分布式事务、两阶段提交协议、三阶提交协议</td>
+<td><a href="http://blog.jobbole.com/95632" target="_blank" rel="noopener">http://blog.jobbole.com/95632</a></td>
+</tr>
+<tr>
+<td>java知识分享</td>
+<td><a href="https://github.com/crossoverJie/Java-Interview" target="_blank" rel="noopener">https://github.com/crossoverJie/Java-Interview</a></td>
+</tr>
+<tr>
+<td>spring集成mybatis实现mysql读写分离</td>
+<td><a href="https://www.cnblogs.com/lidj/p/7337535.html" target="_blank" rel="noopener">https://www.cnblogs.com/lidj/p/7337535.html</a></td>
+</tr>
+<tr>
+<td>DDD-领域驱动设计在互联网业务开发中的实践</td>
+<td><a href="https://zhuanlan.zhihu.com/p/32459776" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32459776</a></td>
+</tr>
+<tr>
+<td>注释驱动的 Spring cache 缓存介绍</td>
+<td><a href="https://www.ibm.com/developerworks/cn/opensource/os-cn-spring-cache/index.html" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/opensource/os-cn-spring-cache/index.html</a></td>
+</tr>
+<tr>
+<td>Tomcat系统架构</td>
+<td><a href="https://blog.csdn.net/xlgen157387/article/details/79006434">https://blog.csdn.net/xlgen157387/article/details/79006434</a></td>
+</tr>
+<tr>
+<td>Tomcat工作原理</td>
+<td><a href="https://www.ibm.com/developerworks/cn/java/j-lo-tomcat1" target="_blank" rel="noopener">https://www.ibm.com/developerworks/cn/java/j-lo-tomcat1</a></td>
+</tr>
+<tr>
+<td>图解Tomcat类加载机制</td>
+<td><a href="https://www.aliyun.com/jiaocheng/290132.html" target="_blank" rel="noopener">https://www.aliyun.com/jiaocheng/290132.html</a></td>
+</tr>
+</tbody>
+</table>
+
       
 
       
@@ -228,17 +298,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">HashMap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -289,7 +348,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/09/05/HashMap-JDK-1-8/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://blog.csdn.net/zhengyong15984285623?viewmode=contents/2018/12/28/经典技术文章概览/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -303,18 +362,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/05/Drools使用/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Drools使用
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/09/05/Mockito单元测试/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Mockito单元测试</div>
+    <a href="/2018/12/07/Java垃圾收集器/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java垃圾收集器</div>
       <i class="icon-circle-right"></i>
     </a>
   
