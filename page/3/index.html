@@ -155,6 +155,539 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spark基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/05/Spark基础/">Spark基础</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/05/Spark基础/" class="archive-article-date">
+  	<time datetime="2018-09-05T07:36:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h3><p>使用语言：scala</p>
+<p>术语：Resilient Distributed Datasets（RDD）</p>
+<h3 id="二、弹性分布式数据集-RDD-定义"><a href="#二、弹性分布式数据集-RDD-定义" class="headerlink" title="二、弹性分布式数据集(RDD)定义"></a>二、弹性分布式数据集(RDD)定义</h3><p>Spark围绕着弹性分布式数据集（RDD）的概念，是一个可以并行操作的容错容器集合，有两种方法来创建RDD：</p>
+<blockquote>
+<ol>
+<li>并行化驱动程序中的现有集合</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>外部存储系统中的数据集，例如共享文件系统，HDFS，HBase或提供Hadoop InputFormat的任何数据源。</li>
+</ol>
+</blockquote>
+<p>1） Parallelized Collections(并行数据集)</p>
+<p>使用SparkContext的parallelize方法创建一个并行数据集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val data = Array(1, 2, 3, 4, 5)</span><br><span class="line">val distData = sc.parallelize(data)</span><br></pre></td></tr></table></figure>
+<p>2） 外部数据集(共享文件系统,HDFS,HBase…)</p>
+<p>下面使用SparkContext的textFile方法创建一个文件数据集</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">val distFile = sc.textFile(&quot;data.txt&quot;)</span><br></pre></td></tr></table></figure>
+<p>注意：</p>
+<blockquote>
+<ol>
+<li>Spark的所有基于文件的输入方法（包括textFile）都支持在目录，压缩文件和通配符上运行。 例如，可以使用textFile（“/ my / directory”），textFile（“/ my / directory / <em>。txt”）和textFile（“/ my / directory / </em>.gz”）。</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>textFile方法还接受可选的第二个参数，用于控制文件的分区数。 默认情况下，Spark为文件的每个块创建一个分区（HDFS默认为128MB），但你也可以通过传递一个更大的值来请求更多的分区。 请注意，您不能有比块更少的分区。</li>
+</ol>
+</blockquote>
+<h3 id="三、弹性分布式数据集-RDD-操作"><a href="#三、弹性分布式数据集-RDD-操作" class="headerlink" title="三、弹性分布式数据集(RDD)操作"></a>三、弹性分布式数据集(RDD)操作</h3><p>####（一）定义</p>
+<p>RDD支持两种类型的操作：</p>
+<blockquote>
+<ol>
+<li>转换（Transformations）：从现有数据集创建新数据集。例如：map是一个通过一个函数传递每个数据集元素的变换，并返回一个表示结果的新RDD</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>动作（Actions）：在数据集上运行计算后向驱动程序返回值。例如：reduce是使用一些函数聚合RDD的所有元素并将最终结果返回到驱动程序的动作</li>
+</ol>
+</blockquote>
+<p>Spark中的所有转换都是懒惰的，因为它们不会马上计算它们的结果。相反，他们只记住应用于一些基础数据集（例如文件）的转换。仅当操作需要将结果返回到驱动程序时才会计算转换。这种设计使Spark能够更有效地运行。例如，我们可以认识到通过map创建的数据集将在reduce中使用，并且只返回reduce到驱动程序的结果，而不是较大的映射数据集。</p>
+<p>默认情况下，每次对其执行操作时，都可以重新计算每个已转换的RDD。但是，您还可以使用persist（或cache）方法在内存中持久化RDD，在这种情况下，Spark会保留集群上的元素，以便在下次查询时更快地访问。还支持在磁盘上持久存储RDD，或者在多个节点上复制RDD。</p>
+<p>####（二）基础</p>
+<p>为了说明RDD基础知识，下面示列程序解释说明： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val lines = sc.textFile(&quot;data.txt&quot;) </span><br><span class="line">val lineLengths = lines.map(s =&gt; s.length)</span><br><span class="line">val totalLength = lineLengths.reduce((a, b) =&gt; a + b)</span><br><span class="line">lineLengths.persist()</span><br></pre></td></tr></table></figure>
+<ol>
+<li>第一行定义来自外部文件的基本RDD。 此数据集未加载到内存中或以其他方式处理：行仅仅是指向文件的指针。</li>
+<li>第二行定义lineLength作为地图变换的结果。 同样，由于懒惰，lineLength不会立即计算</li>
+<li>第三行我们运行reduce，这是一个动作。 在这一点上，Spark将计算分解为在单独的机器上运行的任务，每个机器运行它的一部分映射和本地缩减，只返回它的驱动程序的答案。</li>
+<li>第四行持久化数据到内存</li>
+</ol>
+<p>####（三）RDD类型说明</p>
+<p>下面表格列除了<code>Spark</code>支持的一下常用<code>Transformations</code> ：</p>
+<table>
+<thead>
+<tr>
+<th>转换（Transformation）</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>map(func)</td>
+<td>返回通过函数func传递源的每个元素形成的新的分布式数据集</td>
+<td></td>
+</tr>
+<tr>
+<td>filter(func)</td>
+<td>返回通过选择func返回true的源的那些元素形成的新数据集</td>
+<td></td>
+</tr>
+<tr>
+<td>flatMap(func)</td>
+<td>与map类似，但每个输入项可以映射到0个或更多的输出项（因此func应该返回一个Seq，而不是一个单独的项）</td>
+<td></td>
+</tr>
+<tr>
+<td>mapPartitions(func)</td>
+<td>类似于map，但是在RDD的每个分区（块）上单独运行，因此当在类型T的RDD上运行时，func必须是Iterator <t> =&gt; Iterator <u>类型</u></t></td>
+<td></td>
+</tr>
+<tr>
+<td>mapPartitionsWithIndex(func)</td>
+<td>与mapPartition类似，但是也为func提供了表示分区索引的整数值，因此当在类型为T的RDD上运行时，func必须是类型（Int，Iterator <t>）=&gt; Iterator =&gt; Iterator <u>类型</u></t></td>
+<td></td>
+</tr>
+<tr>
+<td>sample(withReplacement, fraction, seed)</td>
+<td>使用给定的随机数发生器种子，采样具有或不具有替换的数据的分数</td>
+<td></td>
+</tr>
+<tr>
+<td>union(otherDataset)</td>
+<td>返回一个新的数据集，其中包含源数据集和参数中元素的并集</td>
+<td></td>
+</tr>
+<tr>
+<td>intersection(otherDataset)</td>
+<td>返回一个包含源数据集和参数中的元素交集的新RDD</td>
+<td></td>
+</tr>
+<tr>
+<td>distinct([numTasks]))</td>
+<td>返回包含源数据集的不同元素的新数据集</td>
+<td>去重元素</td>
+</tr>
+<tr>
+<td>groupByKey([numTasks])</td>
+<td>当在（K，V）对的数据集上调用时，返回（K，Iterable <v>）对的数据集。注意：如果要进行分组以便对每个键执行聚合（例如总和或平均值），使用reduceByKey或aggregateByKey将产生更好的性能。注意：默认情况下，输出中的并行性级别取决于父RDD的分区数。 您可以传递可选的numTasks参数，以设置不同数量的任务。</v></td>
+<td></td>
+</tr>
+<tr>
+<td>reduceByKey(func, [numTasks])</td>
+<td>当在（K，V）对的数据集上调用时，返回（K，V）对的数据集，其中使用给定的reduce函数func聚集每个键的值，其必须是类型（V，V）=&gt; V.像groupByKey一样，reduce任务的数量可以通过可选的第二个参数来配置</td>
+<td></td>
+</tr>
+<tr>
+<td>aggregateByKey(zeroValue)(seqOp, combOp, [numTasks])</td>
+<td>当在（K，V）对的数据集上调用时，返回（K，U）对的数据集，其中使用给定的组合函数和中性“零”值来聚合每个键的值。 允许与输入值类型不同的聚合值类型，同时避免不必要的分配。 像groupByKey中一样，reduce任务的数量可以通过可选的第二个参数来配置</td>
+<td></td>
+</tr>
+<tr>
+<td>sortByKey([ascending], [numTasks])</td>
+<td>当对（K，V）对的数据集（其中K实现Ordered）调用时，返回按升序或降序按键排序的（K，V）对的数据集，如布尔值升序参数中所指定。</td>
+<td></td>
+</tr>
+<tr>
+<td>join(otherDataset, [numTasks])</td>
+<td>当对类型（K，V）和（K，W）的数据集调用时，返回具有每个键的所有元素对的（K，（V，W））对的数据集。 外部联接通过leftOuterJoin，rightOuterJoin和fullOuterJoin支持</td>
+<td></td>
+</tr>
+<tr>
+<td>cogroup(otherDataset, [numTasks])</td>
+<td>当对类型（K，V）和（K，W）的数据集调用时，返回（K，（Iterable <v>，Iterable <w>））元组的数据集。 此操作也称为groupWith。</w></v></td>
+<td></td>
+</tr>
+<tr>
+<td>cartesian(otherDataset)</td>
+<td>当调用类型T和U的数据集时，返回（T，U）对（所有元素对）的数据集</td>
+<td></td>
+</tr>
+<tr>
+<td>pipe(command, [envVars])</td>
+<td>通过shell命令管道RDD的每个分区，例如。 一个Perl或bash脚本。 RDD元素被写入进程的stdin，并且行输出到其stdout作为字符串的RDD返回</td>
+<td></td>
+</tr>
+<tr>
+<td>coalesce(numPartitions)</td>
+<td>将RDD中的分区数减少到numPartitions。 用于在过滤掉大型数据集后更有效地运行操作</td>
+<td></td>
+</tr>
+<tr>
+<td>repartition(numPartitions)</td>
+<td>随机重新刷新RDD中的数据以创建更多或更少的分区，并在它们之间进行平衡。 这总是在网络上刷新所有数据</td>
+<td></td>
+</tr>
+<tr>
+<td>repartitionAndSortWithinPartitions(partitioner)</td>
+<td>根据给定的分区器重新分区RDD，并在每个生成的分区中按其键排序记录。 这比调用重新分区然后在每个分区内排序更有效，因为它可以将排序推入shuffle机器</td>
+</tr>
+</tbody>
+</table>
+<p>下面表格列除了<code>Spark</code>支持的一下常用<code>Actions</code> ：</p>
+<table>
+<thead>
+<tr>
+<th>动作（Action）</th>
+<th>说明</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>reduce(func)</td>
+<td>使用函数func（它接受两个参数并返回一个）聚合数据集的元素。 函数应该是可交换和关联的，以便它可以被并行正确计算</td>
+<td></td>
+</tr>
+<tr>
+<td>collect()</td>
+<td>在驱动程序中将数据集的所有元素作为数组返回。 这在返回足够小的数据子集的过滤器或其他操作之后通常是有用的</td>
+<td></td>
+</tr>
+<tr>
+<td>count()</td>
+<td>返回数据集中的元素数</td>
+<td></td>
+</tr>
+<tr>
+<td>first()</td>
+<td>返回数据集的第一个元素,类似于take(1)</td>
+<td></td>
+</tr>
+<tr>
+<td>take(n)</td>
+<td>返回数组中前n个元素的数组</td>
+<td></td>
+</tr>
+<tr>
+<td>takeSample(withReplacement, num, [seed])</td>
+<td>返回具有数据集的num个元素的随机样本的数组，具有或不具有替换，可选地预指定随机数生成器种子</td>
+<td></td>
+</tr>
+<tr>
+<td>takeOrdered(n, [ordering])</td>
+<td>使用它们的自然顺序或自定义比较器返回RDD的前n个元素将数据集的元素作为文本文件（或一组文本文件）写入本地文件系统，HDFS或任何其他Hadoop支持的文件系统中的给定目录中。 Spark将对每个元素调用toString将其转换为文件中的一行文本</td>
+<td></td>
+</tr>
+<tr>
+<td>saveAsSequenceFile(path) (Java and Scala)</td>
+<td>将数据集的元素作为Hadoop SequenceFile写入本地文件系统，HDFS或任何其他Hadoop支持的文件系统中的给定路径中。 这可以在实现Hadoop的Writable接口的键值对的RDD上使用。 在Scala中，它也可以隐式转换为Writable的类型（Spark包括基本类型的转换，如Int，Double，String等）</td>
+<td></td>
+</tr>
+<tr>
+<td>saveAsObjectFile(path) (Java and Scala)</td>
+<td>使用Java序列化以简单的格式编写数据集的元素，然后可以使用SparkContext.objectFile()加载</td>
+<td></td>
+</tr>
+<tr>
+<td>countByKey()</td>
+<td>仅适用于（K，V）类型的RDD。 返回具有每个键的计数的（K，Int）对的哈希</td>
+<td></td>
+</tr>
+<tr>
+<td>foreach(func)</td>
+<td>对数据集的每个元素运行函数func。 这通常会有其他影响，例如更新累加器或与外部存储系统交互。注意：修改除foreach（）之外的累加器以外的变量可能会导致未定义的行为</td>
+</tr>
+</tbody>
+</table>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>参考：<a href="http://spark.apache.org/docs/latest/programming-guide.html" target="_blank" rel="noopener">http://spark.apache.org/docs/latest/programming-guide.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">spark</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">scala</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/05/Spark基础/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-wireshark抓包过虑规则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/05/wireshark抓包过虑规则/">wireshark抓包过虑规则</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/05/wireshark抓包过虑规则/" class="archive-article-date">
+  	<time datetime="2018-09-05T07:32:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><blockquote>
+<p>Wireshark（前称Ethereal）是一个网络封包分析软件。网络封包分析软件的功能是撷取网络封包，并尽可能显示出最为详细的网络封包资料</p>
+</blockquote>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>下载地址：<a href="https://www.wireshark.org/download.html" target="_blank" rel="noopener">https://www.wireshark.org/download.html</a></p>
+<h4 id="规则描述"><a href="#规则描述" class="headerlink" title="规则描述"></a>规则描述</h4><table>
+<thead>
+<tr>
+<th>规则</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>http.request.uri</td>
+<td>过滤出所有uri</td>
+<td></td>
+</tr>
+<tr>
+<td>http.request.method==”POST”</td>
+<td>过滤出所有post请求</td>
+<td></td>
+</tr>
+<tr>
+<td>http.request.uri==”/v2transapi”</td>
+<td>过滤指定uri</td>
+<td>过滤出/v2transapi</td>
+</tr>
+<tr>
+<td>http.request.uri matches “/*api”</td>
+<td>过滤url中包含api结尾的uri</td>
+<td></td>
+</tr>
+<tr>
+<td>ip.src==106.39.162.57</td>
+<td>来源ip等于某个ip</td>
+<td>同ip.src eq 106.39.162.57</td>
+</tr>
+<tr>
+<td>ip.dst==106.39.162.57</td>
+<td>目标ip等于某个ip</td>
+<td>同ip.dst eq 106.39.162.57</td>
+</tr>
+<tr>
+<td>ip.addr==106.39.162.57</td>
+<td>同时显示来源和目标ip</td>
+<td>同ip.addr eq 192.168.1.107</td>
+</tr>
+<tr>
+<td>tcp.port==443</td>
+<td>过滤端口</td>
+<td>过滤出端口为443</td>
+</tr>
+<tr>
+<td>http</td>
+<td>过滤协议</td>
+<td>同tcp、udp、arp、http、ftp、ssl、smtp、dns、ip</td>
+</tr>
+<tr>
+<td>eth.dst==A0:00:00:04:C5:84</td>
+<td>太以网头过滤</td>
+<td>过滤目标mac</td>
+</tr>
+</tbody>
+</table>
+<h4 id="抓包"><a href="#抓包" class="headerlink" title="抓包"></a>抓包</h4><p>访问<a href="http://fanyi.baidu.com/v2transapi?simple_means_flag=3&amp;transtype=translang&amp;query=hello&amp;from=en&amp;to=zh" target="_blank" rel="noopener">http://fanyi.baidu.com/v2transapi</a>结果如下：</p>
+<p><img src="http://img.blog.csdn.net/20170314165120591?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhlbmd5b25nMTU5ODQyODU2MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="http协议包"></p>
+<p>1）No1：请求客户端（10.57.2.232）向服务器（106.39.162.57）发出连接请求。此为TCP三次握手第一步，此时从图中可以看出，为SYN，seq:X （x=0）<br>2）No2：服务器（106.39.162.57）回应了请求客户端（10.57.2.232）的请求，并要求确认，此时为：SYN，ACK，此时seq：y（y为0），ACK：x+1（为1）。此为三次握手的第二步；<br>3）No3：请求客户端（10.57.2.232）回应了服务器（106.39.162.57）的确认，连接成功。为：ACK，此时seq：x+1（为1），ACK：y+1（为1）。此为三次握手的第三步；<br>4）No4：请求客户端（10.57.2.232）发出一个页面HTTP请求；<br>5）No5：服务器（106.39.162.57）确认；<br>6）No6：服务器（106.39.162.57）发送数据；</p>
+<h4 id="TCP-三次握手协议"><a href="#TCP-三次握手协议" class="headerlink" title="TCP 三次握手协议"></a>TCP 三次握手协议</h4><p><img src="http://img.blog.csdn.net/20170314170259932?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemhlbmd5b25nMTU5ODQyODU2MjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>详见百科：<a href="http://baike.baidu.com/item/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B?fr=aladdin" target="_blank" rel="noopener">http://baike.baidu.com/item/%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B?fr=aladdin</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">wireshark</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/05/wireshark抓包过虑规则/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-dubbo泛化调用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/05/dubbo泛化调用/">dubbo泛化调用</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/05/dubbo泛化调用/" class="archive-article-date">
+  	<time datetime="2018-09-05T07:30:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h4><blockquote>
+<p>泛接口调用方式主要用于客户端没有API接口及模型类元的情况，参数及返回值中的所有POJO均用Map表示，通常用于框架集成，比如：实现一个通用的服务测试框架，可通过GenericService调用所有服务实现。</p>
+</blockquote>
+<h4 id="二、调用示列"><a href="#二、调用示列" class="headerlink" title="二、调用示列"></a>二、调用示列</h4><p>方式一： xml声明dubbo reference</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;dubbo:reference id=&quot;valueService&quot; interface=&quot;cn.pomelo.client.intf.IListValueService&quot; generic=&quot;true&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">GenericService barService = (GenericService) applicationContext.getBean(&quot;valueService&quot;);</span><br><span class="line"></span><br><span class="line">// 用Map表示POJO参数，如果返回值为POJO也将自动转成Map</span><br><span class="line">Map&lt;String, Object&gt; cache = new HashMap&lt;&gt;();</span><br><span class="line">cache.put(&quot;type&quot;, &quot;mobile&quot;);</span><br><span class="line">cache.put(&quot;value&quot;, &quot;18969975142&quot;);</span><br><span class="line"></span><br><span class="line">// 基本类型以及Date,List,Map等不需要转换，直接调用</span><br><span class="line">Object result = genericService.$invoke(&quot;getCache&quot;,</span><br><span class="line">                                       new String[] &#123; &quot;cn.pomelo.client.pojo.request.ListQueryBean&quot; &#125;,</span><br><span class="line">                                       new Object[] &#123; cache &#125;);</span><br></pre></td></tr></table></figure>
+<p>方式二：xml不声明dubbo reference</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> @Autowired</span><br><span class="line"> private ReferenceConfig&lt;GenericService&gt; referenceConfig;</span><br><span class="line"></span><br><span class="line"> public Object genericInvoker() &#123;</span><br><span class="line">    // 引用远程服务</span><br><span class="line">    ReferenceConfig&lt;GenericService&gt; reference = new ReferenceConfig&lt;&gt;(); // 该实例很重量，里面封装了所有与注册中心及服务提供方连接，请缓存</span><br><span class="line">    reference.setInterface(&quot;cn.pomelo.client.intf.IListValueService&quot;); // 弱类型接口名</span><br><span class="line">    reference.setVersion(&quot;1.0.0&quot;);</span><br><span class="line">    reference.setGeneric(true); // 声明为泛化接口</span><br><span class="line">    reference.setApplication(referenceConfig.getApplication());</span><br><span class="line">    reference.setRegistry(referenceConfig.getRegistry());</span><br><span class="line"></span><br><span class="line">    GenericService genericService = reference.get(); // 用com.alibaba.dubbo.rpc.service.GenericService可以替代所有接口引用</span><br><span class="line"></span><br><span class="line">    // 用Map表示POJO参数，如果返回值为POJO也将自动转成Map</span><br><span class="line">    Map&lt;String, Object&gt; cache = new HashMap&lt;&gt;();</span><br><span class="line">    cache.put(&quot;type&quot;, &quot;mobile&quot;);</span><br><span class="line">    cache.put(&quot;value&quot;, &quot;18969975142&quot;);</span><br><span class="line">    // 基本类型以及Date,List,Map等不需要转换，直接调用</span><br><span class="line">    Object result = genericService.$invoke(&quot;getCache&quot;,</span><br><span class="line">                                           new String[] &#123; &quot;cn.pomelo.client.pojo.request.ListQueryBean&quot; &#125;,</span><br><span class="line">                                           new Object[] &#123; cache &#125;);</span><br><span class="line"></span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dubbo</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/05/dubbo泛化调用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-greys使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -943,6 +1476,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">swagger</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">hadoop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hdfs</a>
               </li>
             
             <div class="clearfix"></div>
